@@ -26,6 +26,10 @@
 		D43A69A917E935C5006A1B03 /* RXPersistenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69A817E935C5006A1B03 /* RXPersistenceController.m */; };
 		D43A69AD17E9363A006A1B03 /* RXMemoization.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69AC17E9363A006A1B03 /* RXMemoization.m */; };
 		D43A69B017E93786006A1B03 /* RXPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69AF17E93786006A1B03 /* RXPromise.m */; };
+		D43A69B417E942B5006A1B03 /* NAVELCommit.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B317E942B5006A1B03 /* NAVELCommit.m */; };
+		D43A69B717E942B6006A1B03 /* NAVELPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B617E942B6006A1B03 /* NAVELPerson.m */; };
+		D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B917E942B6006A1B03 /* NAVELBranch.m */; };
+		D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BC17E942B6006A1B03 /* NAVELRepository.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,14 @@
 		D43A69AC17E9363A006A1B03 /* RXMemoization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMemoization.m; sourceTree = "<group>"; };
 		D43A69AE17E93786006A1B03 /* RXPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXPromise.h; sourceTree = "<group>"; };
 		D43A69AF17E93786006A1B03 /* RXPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXPromise.m; sourceTree = "<group>"; };
+		D43A69B217E942B5006A1B03 /* NAVELCommit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELCommit.h; sourceTree = "<group>"; };
+		D43A69B317E942B5006A1B03 /* NAVELCommit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELCommit.m; sourceTree = "<group>"; };
+		D43A69B517E942B6006A1B03 /* NAVELPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELPerson.h; sourceTree = "<group>"; };
+		D43A69B617E942B6006A1B03 /* NAVELPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELPerson.m; sourceTree = "<group>"; };
+		D43A69B817E942B6006A1B03 /* NAVELBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELBranch.h; sourceTree = "<group>"; };
+		D43A69B917E942B6006A1B03 /* NAVELBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELBranch.m; sourceTree = "<group>"; };
+		D43A69BB17E942B6006A1B03 /* NAVELRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELRepository.h; sourceTree = "<group>"; };
+		D43A69BC17E942B6006A1B03 /* NAVELRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepository.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +144,7 @@
 				D43A69AA17E93620006A1B03 /* Utilities */,
 				D43A697C17E92AF6006A1B03 /* Main.storyboard */,
 				D43A698817E92AF6006A1B03 /* Images.xcassets */,
+				D43A69B117E94291006A1B03 /* Model */,
 				D43A697F17E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld */,
 				D43A697117E92AF6006A1B03 /* Supporting Files */,
 			);
@@ -185,6 +198,21 @@
 				D43A69AC17E9363A006A1B03 /* RXMemoization.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		D43A69B117E94291006A1B03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D43A69BB17E942B6006A1B03 /* NAVELRepository.h */,
+				D43A69BC17E942B6006A1B03 /* NAVELRepository.m */,
+				D43A69B817E942B6006A1B03 /* NAVELBranch.h */,
+				D43A69B917E942B6006A1B03 /* NAVELBranch.m */,
+				D43A69B517E942B6006A1B03 /* NAVELPerson.h */,
+				D43A69B617E942B6006A1B03 /* NAVELPerson.m */,
+				D43A69B217E942B5006A1B03 /* NAVELCommit.h */,
+				D43A69B317E942B5006A1B03 /* NAVELCommit.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,10 +313,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D43A69B417E942B5006A1B03 /* NAVELCommit.m in Sources */,
 				D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */,
+				D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */,
+				D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */,
 				D43A697717E92AF6006A1B03 /* main.m in Sources */,
 				D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */,
 				D43A69AD17E9363A006A1B03 /* RXMemoization.m in Sources */,
+				D43A69B717E942B6006A1B03 /* NAVELPerson.m in Sources */,
 				D43A69A917E935C5006A1B03 /* RXPersistenceController.m in Sources */,
 				D43A69B017E93786006A1B03 /* RXPromise.m in Sources */,
 			);
