@@ -15,7 +15,7 @@
 		D43A697717E92AF6006A1B03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A697617E92AF6006A1B03 /* main.m */; };
 		D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */; };
 		D43A697E17E92AF6006A1B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D43A697C17E92AF6006A1B03 /* Main.storyboard */; };
-		D43A698117E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D43A697F17E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld */; };
+		D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D43A697F17E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld */; };
 		D43A698917E92AF6006A1B03 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43A698817E92AF6006A1B03 /* Images.xcassets */; };
 		D43A699017E92AF6006A1B03 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A698F17E92AF6006A1B03 /* XCTest.framework */; };
 		D43A699117E92AF6006A1B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696817E92AF6006A1B03 /* Foundation.framework */; };
@@ -51,7 +51,7 @@
 		D43A697917E92AF6006A1B03 /* NAVELAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVELAppDelegate.h; sourceTree = "<group>"; };
 		D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVELAppDelegate.m; sourceTree = "<group>"; };
 		D43A697D17E92AF6006A1B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D43A698017E92AF6006A1B03 /* Navel_Gazing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Navel_Gazing.xcdatamodel; sourceTree = "<group>"; };
+		D43A698017E92AF6006A1B03 /* Navel-Gazing.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = "Navel-Gazing.xcdatamodel"; sourceTree = "<group>"; };
 		D43A698817E92AF6006A1B03 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D43A698E17E92AF6006A1B03 /* Navel-GazingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Navel-GazingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43A698F17E92AF6006A1B03 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -132,7 +132,7 @@
 				D43A69AA17E93620006A1B03 /* Utilities */,
 				D43A697C17E92AF6006A1B03 /* Main.storyboard */,
 				D43A698817E92AF6006A1B03 /* Images.xcassets */,
-				D43A697F17E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld */,
+				D43A697F17E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld */,
 				D43A697117E92AF6006A1B03 /* Supporting Files */,
 			);
 			path = "Navel-Gazing";
@@ -285,7 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D43A698117E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld in Sources */,
+				D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */,
 				D43A697717E92AF6006A1B03 /* main.m in Sources */,
 				D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */,
 				D43A69AD17E9363A006A1B03 /* RXMemoization.m in Sources */,
@@ -513,13 +513,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D43A697F17E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld */ = {
+		D43A697F17E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D43A698017E92AF6006A1B03 /* Navel_Gazing.xcdatamodel */,
+				D43A698017E92AF6006A1B03 /* Navel-Gazing.xcdatamodel */,
 			);
-			currentVersion = D43A698017E92AF6006A1B03 /* Navel_Gazing.xcdatamodel */;
-			path = Navel_Gazing.xcdatamodeld;
+			currentVersion = D43A698017E92AF6006A1B03 /* Navel-Gazing.xcdatamodel */;
+			path = "Navel-Gazing.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="13A584" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Branch" syncable="YES">
+    <entity name="Branch" representedClassName="NAVELBranch" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="head" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Commit" inverseName="branches" inverseEntity="Commit" syncable="YES"/>
         <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="branches" inverseEntity="Repository" syncable="YES"/>
     </entity>
-    <entity name="Commit" syncable="YES">
+    <entity name="Commit" representedClassName="NAVELCommit" syncable="YES">
         <attribute name="dateAuthored" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="sha1" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="commits" inverseEntity="Person" syncable="YES"/>
@@ -13,22 +13,22 @@
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Commit" inverseName="parents" inverseEntity="Commit" syncable="YES"/>
         <relationship name="parents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="children" inverseEntity="Commit" syncable="YES"/>
     </entity>
-    <entity name="Person" syncable="YES">
+    <entity name="Person" representedClassName="NAVELPerson" syncable="YES">
         <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="author" inverseEntity="Commit" syncable="YES"/>
         <relationship name="repositories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Repository" inverseName="owner" inverseEntity="Repository" syncable="YES"/>
     </entity>
-    <entity name="Repository" syncable="YES">
+    <entity name="Repository" representedClassName="NAVELRepository" syncable="YES">
         <attribute name="urlString" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Branch" inverseName="repository" inverseEntity="Branch" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="repositories" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Commit" positionX="-117" positionY="-54" width="128" height="133"/>
-        <element name="Person" positionX="-324" positionY="126" width="128" height="118"/>
-        <element name="Repository" positionX="-470" positionY="-63" width="128" height="88"/>
         <element name="Branch" positionX="-297" positionY="-162" width="128" height="88"/>
+        <element name="Commit" positionX="-117" positionY="-43" width="128" height="133"/>
+        <element name="Person" positionX="-299" positionY="126" width="128" height="118"/>
+        <element name="Repository" positionX="-470" positionY="-63" width="128" height="88"/>
     </elements>
 </model>
