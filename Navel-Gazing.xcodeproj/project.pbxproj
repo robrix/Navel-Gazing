@@ -30,6 +30,7 @@
 		D43A69B717E942B6006A1B03 /* NAVELPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B617E942B6006A1B03 /* NAVELPerson.m */; };
 		D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B917E942B6006A1B03 /* NAVELBranch.m */; };
 		D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BC17E942B6006A1B03 /* NAVELRepository.m */; };
+		D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BF17E94457006A1B03 /* RXCollectionController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		D43A69B917E942B6006A1B03 /* NAVELBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELBranch.m; sourceTree = "<group>"; };
 		D43A69BB17E942B6006A1B03 /* NAVELRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELRepository.h; sourceTree = "<group>"; };
 		D43A69BC17E942B6006A1B03 /* NAVELRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepository.m; sourceTree = "<group>"; };
+		D43A69BE17E94457006A1B03 /* RXCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCollectionController.h; sourceTree = "<group>"; };
+		D43A69BF17E94457006A1B03 /* RXCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCollectionController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +141,6 @@
 		D43A697017E92AF6006A1B03 /* Navel-Gazing */ = {
 			isa = PBXGroup;
 			children = (
-				D43A697917E92AF6006A1B03 /* NAVELAppDelegate.h */,
-				D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */,
 				D43A69A617E935A7006A1B03 /* Controllers */,
 				D43A69AA17E93620006A1B03 /* Utilities */,
 				D43A697C17E92AF6006A1B03 /* Main.storyboard */,
@@ -183,10 +184,14 @@
 		D43A69A617E935A7006A1B03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D43A697917E92AF6006A1B03 /* NAVELAppDelegate.h */,
+				D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */,
 				D43A69A717E935C5006A1B03 /* RXPersistenceController.h */,
 				D43A69A817E935C5006A1B03 /* RXPersistenceController.m */,
 				D43A69AE17E93786006A1B03 /* RXPromise.h */,
 				D43A69AF17E93786006A1B03 /* RXPromise.m */,
+				D43A69BE17E94457006A1B03 /* RXCollectionController.h */,
+				D43A69BF17E94457006A1B03 /* RXCollectionController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D43A69B417E942B5006A1B03 /* NAVELCommit.m in Sources */,
+				D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */,
 				D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */,
 				D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */,
 				D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */,
