@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D43A696917E92AF6006A1B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696817E92AF6006A1B03 /* Foundation.framework */; };
+		D43A696B17E92AF6006A1B03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696A17E92AF6006A1B03 /* CoreGraphics.framework */; };
+		D43A696D17E92AF6006A1B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696C17E92AF6006A1B03 /* UIKit.framework */; };
+		D43A696F17E92AF6006A1B03 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696E17E92AF6006A1B03 /* CoreData.framework */; };
+		D43A697517E92AF6006A1B03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D43A697317E92AF6006A1B03 /* InfoPlist.strings */; };
+		D43A697717E92AF6006A1B03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A697617E92AF6006A1B03 /* main.m */; };
+		D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */; };
+		D43A697E17E92AF6006A1B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D43A697C17E92AF6006A1B03 /* Main.storyboard */; };
+		D43A698117E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D43A697F17E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld */; };
+		D43A698417E92AF6006A1B03 /* NAVELMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A698317E92AF6006A1B03 /* NAVELMasterViewController.m */; };
+		D43A698717E92AF6006A1B03 /* NAVELDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A698617E92AF6006A1B03 /* NAVELDetailViewController.m */; };
+		D43A698917E92AF6006A1B03 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43A698817E92AF6006A1B03 /* Images.xcassets */; };
+		D43A699017E92AF6006A1B03 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A698F17E92AF6006A1B03 /* XCTest.framework */; };
+		D43A699117E92AF6006A1B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696817E92AF6006A1B03 /* Foundation.framework */; };
+		D43A699217E92AF6006A1B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696C17E92AF6006A1B03 /* UIKit.framework */; };
+		D43A699317E92AF6006A1B03 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696E17E92AF6006A1B03 /* CoreData.framework */; };
+		D43A699B17E92AF6006A1B03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D43A699917E92AF6006A1B03 /* InfoPlist.strings */; };
+		D43A699D17E92AF6006A1B03 /* Navel_GazingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A699C17E92AF6006A1B03 /* Navel_GazingTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D43A699417E92AF6006A1B03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D43A695D17E92AF6006A1B03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D43A696417E92AF6006A1B03;
+			remoteInfo = "Navel-Gazing";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D43A696517E92AF6006A1B03 /* Navel-Gazing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Navel-Gazing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D43A696817E92AF6006A1B03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D43A696A17E92AF6006A1B03 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D43A696C17E92AF6006A1B03 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D43A696E17E92AF6006A1B03 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D43A697217E92AF6006A1B03 /* Navel-Gazing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Navel-Gazing-Info.plist"; sourceTree = "<group>"; };
+		D43A697417E92AF6006A1B03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D43A697617E92AF6006A1B03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D43A697817E92AF6006A1B03 /* Navel-Gazing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Navel-Gazing-Prefix.pch"; sourceTree = "<group>"; };
+		D43A697917E92AF6006A1B03 /* NAVELAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVELAppDelegate.h; sourceTree = "<group>"; };
+		D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVELAppDelegate.m; sourceTree = "<group>"; };
+		D43A697D17E92AF6006A1B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D43A698017E92AF6006A1B03 /* Navel_Gazing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Navel_Gazing.xcdatamodel; sourceTree = "<group>"; };
+		D43A698217E92AF6006A1B03 /* NAVELMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVELMasterViewController.h; sourceTree = "<group>"; };
+		D43A698317E92AF6006A1B03 /* NAVELMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVELMasterViewController.m; sourceTree = "<group>"; };
+		D43A698517E92AF6006A1B03 /* NAVELDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVELDetailViewController.h; sourceTree = "<group>"; };
+		D43A698617E92AF6006A1B03 /* NAVELDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVELDetailViewController.m; sourceTree = "<group>"; };
+		D43A698817E92AF6006A1B03 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D43A698E17E92AF6006A1B03 /* Navel-GazingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Navel-GazingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D43A698F17E92AF6006A1B03 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D43A699817E92AF6006A1B03 /* Navel-GazingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Navel-GazingTests-Info.plist"; sourceTree = "<group>"; };
+		D43A699A17E92AF6006A1B03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D43A699C17E92AF6006A1B03 /* Navel_GazingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Navel_GazingTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D43A696217E92AF6006A1B03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D43A696B17E92AF6006A1B03 /* CoreGraphics.framework in Frameworks */,
+				D43A696F17E92AF6006A1B03 /* CoreData.framework in Frameworks */,
+				D43A696D17E92AF6006A1B03 /* UIKit.framework in Frameworks */,
+				D43A696917E92AF6006A1B03 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D43A698B17E92AF6006A1B03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D43A699017E92AF6006A1B03 /* XCTest.framework in Frameworks */,
+				D43A699317E92AF6006A1B03 /* CoreData.framework in Frameworks */,
+				D43A699217E92AF6006A1B03 /* UIKit.framework in Frameworks */,
+				D43A699117E92AF6006A1B03 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D43A695C17E92AF6006A1B03 = {
+			isa = PBXGroup;
+			children = (
+				D43A697017E92AF6006A1B03 /* Navel-Gazing */,
+				D43A699617E92AF6006A1B03 /* Navel-GazingTests */,
+				D43A696717E92AF6006A1B03 /* Frameworks */,
+				D43A696617E92AF6006A1B03 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D43A696617E92AF6006A1B03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D43A696517E92AF6006A1B03 /* Navel-Gazing.app */,
+				D43A698E17E92AF6006A1B03 /* Navel-GazingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D43A696717E92AF6006A1B03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D43A696817E92AF6006A1B03 /* Foundation.framework */,
+				D43A696A17E92AF6006A1B03 /* CoreGraphics.framework */,
+				D43A696C17E92AF6006A1B03 /* UIKit.framework */,
+				D43A696E17E92AF6006A1B03 /* CoreData.framework */,
+				D43A698F17E92AF6006A1B03 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D43A697017E92AF6006A1B03 /* Navel-Gazing */ = {
+			isa = PBXGroup;
+			children = (
+				D43A697917E92AF6006A1B03 /* NAVELAppDelegate.h */,
+				D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */,
+				D43A697C17E92AF6006A1B03 /* Main.storyboard */,
+				D43A698217E92AF6006A1B03 /* NAVELMasterViewController.h */,
+				D43A698317E92AF6006A1B03 /* NAVELMasterViewController.m */,
+				D43A698517E92AF6006A1B03 /* NAVELDetailViewController.h */,
+				D43A698617E92AF6006A1B03 /* NAVELDetailViewController.m */,
+				D43A698817E92AF6006A1B03 /* Images.xcassets */,
+				D43A697F17E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld */,
+				D43A697117E92AF6006A1B03 /* Supporting Files */,
+			);
+			path = "Navel-Gazing";
+			sourceTree = "<group>";
+		};
+		D43A697117E92AF6006A1B03 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D43A697217E92AF6006A1B03 /* Navel-Gazing-Info.plist */,
+				D43A697317E92AF6006A1B03 /* InfoPlist.strings */,
+				D43A697617E92AF6006A1B03 /* main.m */,
+				D43A697817E92AF6006A1B03 /* Navel-Gazing-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D43A699617E92AF6006A1B03 /* Navel-GazingTests */ = {
+			isa = PBXGroup;
+			children = (
+				D43A699C17E92AF6006A1B03 /* Navel_GazingTests.m */,
+				D43A699717E92AF6006A1B03 /* Supporting Files */,
+			);
+			path = "Navel-GazingTests";
+			sourceTree = "<group>";
+		};
+		D43A699717E92AF6006A1B03 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D43A699817E92AF6006A1B03 /* Navel-GazingTests-Info.plist */,
+				D43A699917E92AF6006A1B03 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D43A696417E92AF6006A1B03 /* Navel-Gazing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D43A69A017E92AF6006A1B03 /* Build configuration list for PBXNativeTarget "Navel-Gazing" */;
+			buildPhases = (
+				D43A696117E92AF6006A1B03 /* Sources */,
+				D43A696217E92AF6006A1B03 /* Frameworks */,
+				D43A696317E92AF6006A1B03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Navel-Gazing";
+			productName = "Navel-Gazing";
+			productReference = D43A696517E92AF6006A1B03 /* Navel-Gazing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D43A698D17E92AF6006A1B03 /* Navel-GazingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D43A69A317E92AF6006A1B03 /* Build configuration list for PBXNativeTarget "Navel-GazingTests" */;
+			buildPhases = (
+				D43A698A17E92AF6006A1B03 /* Sources */,
+				D43A698B17E92AF6006A1B03 /* Frameworks */,
+				D43A698C17E92AF6006A1B03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D43A699517E92AF6006A1B03 /* PBXTargetDependency */,
+			);
+			name = "Navel-GazingTests";
+			productName = "Navel-GazingTests";
+			productReference = D43A698E17E92AF6006A1B03 /* Navel-GazingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D43A695D17E92AF6006A1B03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NAVEL;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Rob Rix";
+				TargetAttributes = {
+					D43A698D17E92AF6006A1B03 = {
+						TestTargetID = D43A696417E92AF6006A1B03;
+					};
+				};
+			};
+			buildConfigurationList = D43A696017E92AF6006A1B03 /* Build configuration list for PBXProject "Navel-Gazing" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D43A695C17E92AF6006A1B03;
+			productRefGroup = D43A696617E92AF6006A1B03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D43A696417E92AF6006A1B03 /* Navel-Gazing */,
+				D43A698D17E92AF6006A1B03 /* Navel-GazingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D43A696317E92AF6006A1B03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D43A698917E92AF6006A1B03 /* Images.xcassets in Resources */,
+				D43A697517E92AF6006A1B03 /* InfoPlist.strings in Resources */,
+				D43A697E17E92AF6006A1B03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D43A698C17E92AF6006A1B03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D43A699B17E92AF6006A1B03 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D43A696117E92AF6006A1B03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D43A698117E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld in Sources */,
+				D43A697717E92AF6006A1B03 /* main.m in Sources */,
+				D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */,
+				D43A698717E92AF6006A1B03 /* NAVELDetailViewController.m in Sources */,
+				D43A698417E92AF6006A1B03 /* NAVELMasterViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D43A698A17E92AF6006A1B03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D43A699D17E92AF6006A1B03 /* Navel_GazingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D43A699517E92AF6006A1B03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D43A696417E92AF6006A1B03 /* Navel-Gazing */;
+			targetProxy = D43A699417E92AF6006A1B03 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D43A697317E92AF6006A1B03 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D43A697417E92AF6006A1B03 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D43A697C17E92AF6006A1B03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D43A697D17E92AF6006A1B03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D43A699917E92AF6006A1B03 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D43A699A17E92AF6006A1B03 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D43A699E17E92AF6006A1B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		D43A699F17E92AF6006A1B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D43A69A117E92AF6006A1B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Navel-Gazing/Navel-Gazing-Prefix.pch";
+				INFOPLIST_FILE = "Navel-Gazing/Navel-Gazing-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D43A69A217E92AF6006A1B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Navel-Gazing/Navel-Gazing-Prefix.pch";
+				INFOPLIST_FILE = "Navel-Gazing/Navel-Gazing-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D43A69A417E92AF6006A1B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Navel-Gazing.app/Navel-Gazing";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Navel-Gazing/Navel-Gazing-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Navel-GazingTests/Navel-GazingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D43A69A517E92AF6006A1B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Navel-Gazing.app/Navel-Gazing";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Navel-Gazing/Navel-Gazing-Prefix.pch";
+				INFOPLIST_FILE = "Navel-GazingTests/Navel-GazingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D43A696017E92AF6006A1B03 /* Build configuration list for PBXProject "Navel-Gazing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D43A699E17E92AF6006A1B03 /* Debug */,
+				D43A699F17E92AF6006A1B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D43A69A017E92AF6006A1B03 /* Build configuration list for PBXNativeTarget "Navel-Gazing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D43A69A117E92AF6006A1B03 /* Debug */,
+				D43A69A217E92AF6006A1B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D43A69A317E92AF6006A1B03 /* Build configuration list for PBXNativeTarget "Navel-GazingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D43A69A417E92AF6006A1B03 /* Debug */,
+				D43A69A517E92AF6006A1B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D43A697F17E92AF6006A1B03 /* Navel_Gazing.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D43A698017E92AF6006A1B03 /* Navel_Gazing.xcdatamodel */,
+			);
+			currentVersion = D43A698017E92AF6006A1B03 /* Navel_Gazing.xcdatamodel */;
+			path = Navel_Gazing.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D43A695D17E92AF6006A1B03 /* Project object */;
+}
