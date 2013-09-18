@@ -11,10 +11,80 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="UAi-MU-NEq" kind="relationship" relationship="rootViewController" id="4cG-1K-923"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="448" y="-630"/>
+        </scene>
+        <!--Users-->
+        <scene sceneID="1HR-2J-e3a">
+            <objects>
+                <tableViewController id="UAi-MU-NEq" userLabel="Users" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="F42-Kn-BXM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="user" id="FW9-3E-TIg">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FW9-3E-TIg" id="Hgg-ax-G1b">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="auB-rU-3k9">
+                                            <rect key="frame" x="4" y="2" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="LNo-Dw-4cm"/>
+                                                <constraint firstAttribute="height" constant="40" id="adB-Z0-3tG"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="248" translatesAutoresizingMaskIntoConstraints="NO" id="9hZ-w6-5qw">
+                                            <rect key="frame" x="52" y="11" width="248" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="auB-rU-3k9" secondAttribute="centerY" id="J3l-sk-z2S"/>
+                                        <constraint firstAttribute="centerY" secondItem="9hZ-w6-5qw" secondAttribute="centerY" id="S1T-Ll-6sc"/>
+                                        <constraint firstAttribute="trailing" secondItem="9hZ-w6-5qw" secondAttribute="trailing" constant="20" symbolic="YES" id="WZ0-L9-QSU"/>
+                                        <constraint firstItem="9hZ-w6-5qw" firstAttribute="leading" secondItem="auB-rU-3k9" secondAttribute="trailing" constant="8" symbolic="YES" id="cHh-Qe-w2M"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="auB-rU-3k9" secondAttribute="bottom" constant="1" id="fKk-hK-fQw"/>
+                                        <constraint firstItem="auB-rU-3k9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Hgg-ax-G1b" secondAttribute="top" constant="1" id="gRR-ax-apM"/>
+                                        <constraint firstItem="auB-rU-3k9" firstAttribute="leading" secondItem="Hgg-ax-G1b" secondAttribute="leading" constant="4" id="sSq-2A-qN0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IUx-MA-np6" id="hoA-jc-A4s"/>
+                            <outlet property="delegate" destination="IUx-MA-np6" id="Sqb-hZ-IcR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Users" id="2ca-Xp-z4e">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Q9P-7o-Jd3">
+                            <connections>
+                                <action selector="insertObject:" destination="IUx-MA-np6" id="2bM-PO-iLb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jTJ-DY-5Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="IUx-MA-np6" userLabel="Users Model" customClass="RXCollectionController">
+                    <connections>
+                        <outlet property="tableView" destination="F42-Kn-BXM" id="sAx-hg-z86"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="876" y="-630"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -24,8 +94,8 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
-                        <segue destination="vC3-pB-5Vb" kind="relationship" relationship="detailViewController" id="Tll-UG-LXB"/>
+                        <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="oxg-ii-g1S"/>
+                        <segue destination="vC3-pB-5Vb" kind="relationship" relationship="detailViewController" id="n2z-k0-oYI"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>

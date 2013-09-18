@@ -5,19 +5,13 @@
 #import "RXMemoization.h"
 
 @interface RXPersistenceController ()
-
-@property (nonatomic) NSManagedObjectContext *savingContext;
-@property (nonatomic) NSManagedObjectContext *userInterfaceContext;
-
-@property (nonatomic) NSManagedObjectModel *model;
-
-@property (nonatomic) NSPersistentStoreCoordinator *coordinator;
-
 @end
 
 @implementation RXPersistenceController
 
 #pragma mark Core data stack
+
+@synthesize savingContext = _savingContext;
 
 -(NSManagedObjectContext *)savingContext {
 	return RXMemoize(_savingContext, ^{
@@ -26,6 +20,9 @@
 		return context;
 	});
 }
+
+
+@synthesize userInterfaceContext = _userInterfaceContext;
 
 -(NSManagedObjectContext *)userInterfaceContext {
 	return RXMemoize(_userInterfaceContext, ^{
@@ -36,12 +33,16 @@
 }
 
 
+@synthesize model = _model;
+
 -(NSManagedObjectModel *)model {
 	return RXMemoize(_model, ^{
 		return [NSManagedObjectModel mergedModelFromBundles:@[[NSBundle mainBundle]]];
 	});
 }
 
+
+@synthesize coordinator = _coordinator;
 
 -(NSPersistentStoreCoordinator *)coordinator {
 	return RXMemoize(_coordinator, ^{

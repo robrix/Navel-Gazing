@@ -31,6 +31,8 @@
 		D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B917E942B6006A1B03 /* NAVELBranch.m */; };
 		D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BC17E942B6006A1B03 /* NAVELRepository.m */; };
 		D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BF17E94457006A1B03 /* RXCollectionController.m */; };
+		D43A69C317E946C0006A1B03 /* RXCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69C217E946C0006A1B03 /* RXCollectionViewController.m */; };
+		D43A69CA17E94C60006A1B03 /* RXPromisedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,10 @@
 		D43A69BC17E942B6006A1B03 /* NAVELRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepository.m; sourceTree = "<group>"; };
 		D43A69BE17E94457006A1B03 /* RXCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCollectionController.h; sourceTree = "<group>"; };
 		D43A69BF17E94457006A1B03 /* RXCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCollectionController.m; sourceTree = "<group>"; };
+		D43A69C117E946C0006A1B03 /* RXCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCollectionViewController.h; sourceTree = "<group>"; };
+		D43A69C217E946C0006A1B03 /* RXCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCollectionViewController.m; sourceTree = "<group>"; };
+		D43A69C817E94C60006A1B03 /* RXPromisedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXPromisedImageView.h; sourceTree = "<group>"; };
+		D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXPromisedImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +147,8 @@
 		D43A697017E92AF6006A1B03 /* Navel-Gazing */ = {
 			isa = PBXGroup;
 			children = (
-				D43A69A617E935A7006A1B03 /* Controllers */,
+				D43A69CB17E94C66006A1B03 /* View */,
+				D43A69A617E935A7006A1B03 /* Controller */,
 				D43A69AA17E93620006A1B03 /* Utilities */,
 				D43A697C17E92AF6006A1B03 /* Main.storyboard */,
 				D43A698817E92AF6006A1B03 /* Images.xcassets */,
@@ -181,7 +188,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D43A69A617E935A7006A1B03 /* Controllers */ = {
+		D43A69A617E935A7006A1B03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D43A697917E92AF6006A1B03 /* NAVELAppDelegate.h */,
@@ -192,8 +199,10 @@
 				D43A69AF17E93786006A1B03 /* RXPromise.m */,
 				D43A69BE17E94457006A1B03 /* RXCollectionController.h */,
 				D43A69BF17E94457006A1B03 /* RXCollectionController.m */,
+				D43A69C117E946C0006A1B03 /* RXCollectionViewController.h */,
+				D43A69C217E946C0006A1B03 /* RXCollectionViewController.m */,
 			);
-			name = Controllers;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		D43A69AA17E93620006A1B03 /* Utilities */ = {
@@ -218,6 +227,15 @@
 				D43A69B317E942B5006A1B03 /* NAVELCommit.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D43A69CB17E94C66006A1B03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D43A69C817E94C60006A1B03 /* RXPromisedImageView.h */,
+				D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,12 +338,14 @@
 			files = (
 				D43A69B417E942B5006A1B03 /* NAVELCommit.m in Sources */,
 				D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */,
+				D43A69CA17E94C60006A1B03 /* RXPromisedImageView.m in Sources */,
 				D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */,
 				D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */,
 				D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */,
 				D43A697717E92AF6006A1B03 /* main.m in Sources */,
 				D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */,
 				D43A69AD17E9363A006A1B03 /* RXMemoization.m in Sources */,
+				D43A69C317E946C0006A1B03 /* RXCollectionViewController.m in Sources */,
 				D43A69B717E942B6006A1B03 /* NAVELPerson.m in Sources */,
 				D43A69A917E935C5006A1B03 /* RXPersistenceController.m in Sources */,
 				D43A69B017E93786006A1B03 /* RXPromise.m in Sources */,
