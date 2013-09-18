@@ -15,9 +15,9 @@
 
 @interface NAVELRepository (CoreDataGeneratedAccessors)
 
-- (void)addBranchesObject:(NAVELBranch *)value;
-- (void)removeBranchesObject:(NAVELBranch *)value;
-- (void)addBranches:(NSSet *)values;
-- (void)removeBranches:(NSSet *)values;
+-(void)addBranchesObject:(NAVELBranch *)value;
+-(void)removeBranchesObject:(NAVELBranch *)value;
+-(void)addBranches:(NSSet *)values;
+-(void)removeBranches:(NSSet *)values;
 
 @end

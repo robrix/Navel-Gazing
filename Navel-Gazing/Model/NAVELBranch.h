@@ -6,15 +6,14 @@
 //  Copyright (c) 2013 Rob Rix. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+@import CoreData;
 
 @class NAVELCommit, NAVELRepository;
 
 @interface NAVELBranch : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NAVELCommit *head;
-@property (nonatomic, retain) NAVELRepository *repository;
+@property (nonatomic, copy) NSString * name;
+@property (nonatomic) NAVELCommit *head;
+@property (nonatomic) NAVELRepository *repository;
 
 @end
