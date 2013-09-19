@@ -21,7 +21,7 @@
 }
 
 -(void)setURL:(NSURL *)URL {
-	self.urlString = [URL description];
+	self.urlString = [URL absoluteString];
 }
 
 @end
