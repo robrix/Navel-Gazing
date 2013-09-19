@@ -3,12 +3,12 @@
 #import "NAVELAppDelegate.h"
 
 #import "RXPersistenceController.h"
-#import "RXModelClient.h"
 #import "RXPromise.h"
+#import "RXResponse.h"
 
 #import "NAVELPerson.h"
 
-@interface NAVELAppDelegate () <UIApplicationDelegate, UIAlertViewDelegate, UITextFieldDelegate, RXModelClientResponder>
+@interface NAVELAppDelegate () <UIApplicationDelegate, UIAlertViewDelegate, UITextFieldDelegate, RXUserInterfaceContextResponder>
 
 @property (nonatomic) UIAlertView *userPrompt;
 
@@ -61,8 +61,8 @@
 
 #pragma mark RXModelClientResponder
 
--(void)modelClientDidLoad:(id<RXModelClient>)modelClient {
-	modelClient.context = self.persistenceController.userInterfaceContext;
+-(void)requestUserInterfaceContext:(id<RXRequester>)requester {
+	[requester acceptResponse:self.persistenceController.userInterfaceContext];
 }
 
 @end

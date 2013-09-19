@@ -2,10 +2,10 @@
 
 #import "RXCollectionController.h"
 #import "RXPersistenceController.h"
-#import "RXModelClient.h"
 #import "RXMemoization.h"
+#import "RXResponse.h"
 
-@interface RXCollectionController () <NSFetchedResultsControllerDelegate, RXModelClient>
+@interface RXCollectionController () <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic) IBOutlet RXPersistenceController *persistenceController;
 
@@ -14,6 +14,7 @@
 @property (nonatomic) IBOutlet UIStoryboardSegue *addModelSegue;
 
 @property (nonatomic, readonly) NSFetchRequest *request;
+@property (nonatomic) NSManagedObjectContext *context;
 
 @property (nonatomic) id windowDidBecomeKeyObserver;
 
@@ -48,11 +49,6 @@
 	return [self initWithFetchRequest:request];
 }
 
--(UIResponder *)nextResponder {
-	return self.tableView;
-}
-
-@synthesize context = _context;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 -(NSFetchedResultsController *)fetchedResultsController {
@@ -66,9 +62,7 @@
 }
 
 -(void)refetch {
-	if (!self.context) {
-		[[UIApplication sharedApplication] sendAction:@selector(modelClientDidLoad:) to:nil from:self forEvent:nil];
-	}
+	RXMemoize(self.context, RXResponseToMessage(@selector(requestUserInterfaceContext:), self.tableView));
 	
 	NSError *error;
 	if (![self.fetchedResultsController performFetch:&error]) {

@@ -4,7 +4,7 @@
 
 #import "RXPromise.h"
 
-@interface RXCollectionController : UIResponder <UITableViewDataSource, UITableViewDelegate>
+@interface RXCollectionController : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 
