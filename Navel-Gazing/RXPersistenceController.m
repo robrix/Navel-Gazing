@@ -47,9 +47,15 @@
 -(NSPersistentStoreCoordinator *)coordinator {
 	return RXMemoize(_coordinator, ^{
 		NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.model];
-		NSURL *storeURL = [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"Declarative.sqlite"];
+		NSURL *storeURL = [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:[[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"] stringByAppendingPathExtension:@"sqlite"]];
 		NSError *error;
-		[coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
+		if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+			NSLog(@"error for URL %@: %@", storeURL, error);
+#if DEBUG
+			[[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
+			[coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:NULL];
+#endif
+		}
 		return coordinator;
 	}());
 }
