@@ -14,7 +14,7 @@
 
 @property (nonatomic) IBOutlet UIStoryboardSegue *addModelSegue;
 
-@property (nonatomic, readonly) NSFetchRequest *request;
+@property (nonatomic) NSFetchRequest *request;
 @property (nonatomic) NSManagedObjectContext *context;
 
 @property (nonatomic) id windowDidBecomeKeyObserver;
@@ -23,10 +23,8 @@
 
 @implementation RXCollectionController
 
--(instancetype)initWithFetchRequest:(NSFetchRequest *)request {
+-(instancetype)init {
 	if ((self = [super init])) {
-		_request = request;
-		
 		_windowDidBecomeKeyObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIWindowDidBecomeKeyNotification object:[UIApplication sharedApplication].delegate.window queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 			
 			[self refetch];
@@ -44,11 +42,6 @@
 	}
 }
 
--(instancetype)init {
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
-	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-	return [self initWithFetchRequest:request];
-}
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 
@@ -63,6 +56,11 @@
 }
 
 -(void)refetch {
+	RXMemoize(self.request, ^{
+		NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:self.entityName];
+		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:self.sortKey ascending:YES]];
+		return request;
+	}());
 	RXMemoize(self.context, RXResponseToMessage(@selector(requestUserInterfaceContext:), self.tableView));
 	
 	NSError *error;

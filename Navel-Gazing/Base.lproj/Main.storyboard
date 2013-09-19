@@ -88,6 +88,8 @@
                 <customObject id="IUx-MA-np6" userLabel="Users Model" customClass="RXCollectionController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="entityName" value="Person"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="sortKey" value="name"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="tableView" destination="F42-Kn-BXM" id="OO1-WY-DuM"/>
