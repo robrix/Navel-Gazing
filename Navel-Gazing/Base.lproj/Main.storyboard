@@ -71,7 +71,7 @@
                     <navigationItem key="navigationItem" title="Users" id="2ca-Xp-z4e">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Q9P-7o-Jd3">
                             <connections>
-                                <action selector="insertObject:" destination="IUx-MA-np6" id="2bM-PO-iLb"/>
+                                <action selector="createUser:" destination="jTJ-DY-5Qh" id="fkj-5B-Ofu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,7 +80,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTJ-DY-5Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="IUx-MA-np6" userLabel="Users Model" customClass="RXCollectionController">
                     <connections>
-                        <outlet property="tableView" destination="F42-Kn-BXM" id="sAx-hg-z86"/>
+                        <outlet property="tableView" destination="F42-Kn-BXM" id="OO1-WY-DuM"/>
                     </connections>
                 </customObject>
             </objects>

@@ -2,49 +2,80 @@
 
 #import "RXCollectionController.h"
 #import "RXPersistenceController.h"
+#import "RXModelClient.h"
+#import "RXMemoization.h"
 
-@interface RXCollectionController () <NSFetchedResultsControllerDelegate>
+@interface RXCollectionController () <NSFetchedResultsControllerDelegate, RXModelClient>
 
 @property (nonatomic) IBOutlet RXPersistenceController *persistenceController;
 
 @property (nonatomic, readonly) NSFetchedResultsController *fetchedResultsController;
 
+@property (nonatomic) IBOutlet UIStoryboardSegue *addModelSegue;
+
+@property (nonatomic, readonly) NSFetchRequest *request;
+
+@property (nonatomic) id windowDidBecomeKeyObserver;
+
 @end
 
 @implementation RXCollectionController
 
--(instancetype)initWithFetchRequest:(NSFetchRequest *)request persistenceController:(RXPersistenceController *)persistenceController {
+-(instancetype)initWithFetchRequest:(NSFetchRequest *)request {
 	if ((self = [super init])) {
-		_persistenceController = persistenceController;
-		_fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:persistenceController.userInterfaceContext sectionNameKeyPath:nil cacheName:nil];
-		_fetchedResultsController.delegate = self;
+		_request = request;
+		
+		_windowDidBecomeKeyObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIWindowDidBecomeKeyNotification object:[UIApplication sharedApplication].delegate.window queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+			
+			[self refetch];
+			
+			[[NSNotificationCenter defaultCenter] removeObserver:_windowDidBecomeKeyObserver];
+			_windowDidBecomeKeyObserver = nil;
+		}];
 	}
 	return self;
 }
 
--(instancetype)init {
-	RXPersistenceController *persistenceController = [RXPersistenceController new];
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
-	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-	return [self initWithFetchRequest:request persistenceController:persistenceController];
+-(void)dealloc {
+	if (_windowDidBecomeKeyObserver) {
+		[[NSNotificationCenter defaultCenter] removeObserver:_windowDidBecomeKeyObserver];
+	}
 }
 
+-(instancetype)init {
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
+	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+	return [self initWithFetchRequest:request];
+}
 
--(void)awakeFromNib {
+-(UIResponder *)nextResponder {
+	return self.tableView;
+}
+
+@synthesize context = _context;
+@synthesize fetchedResultsController = _fetchedResultsController;
+
+-(NSFetchedResultsController *)fetchedResultsController {
+	return self.context?
+		RXMemoize(_fetchedResultsController, ^{
+		NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.request managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
+		fetchedResultsController.delegate = self;
+		return fetchedResultsController;
+	})
+	:	nil;
+}
+
+-(void)refetch {
+	if (!self.context) {
+		[[UIApplication sharedApplication] sendAction:@selector(modelClientDidLoad:) to:nil from:self forEvent:nil];
+	}
+	
 	NSError *error;
 	if (![self.fetchedResultsController performFetch:&error]) {
 		NSLog(@"Error: %@", error);
 	}
-}
-
-
--(id<RXPromise>)collectionPromise {
-	RXPromiseResolver *resolver = [RXPromiseResolver new];
-	[self.fetchedResultsController.managedObjectContext performBlock:^{
-		NSError *error;
-		[resolver fulfillWithObject:[self.fetchedResultsController performFetch:&error]? self.fetchedResultsController.fetchedObjects : nil];
-	}];
-	return resolver.promise;
+	
+	[self.tableView reloadData];
 }
 
 
@@ -54,19 +85,6 @@
 
 -(id)objectAtIndexPath:(NSIndexPath *)indexPath {
 	return [self.fetchedResultsController objectAtIndexPath:indexPath];
-}
-
-
--(IBAction)insertObject:(id)sender {
-	NSEntityDescription *entity = self.fetchedResultsController.fetchRequest.entity;
-	Class class = NSClassFromString([entity managedObjectClassName]);
-	NSManagedObject *object = [[class alloc] initWithEntity:entity insertIntoManagedObjectContext:self.fetchedResultsController.managedObjectContext];
-	[object setValue:@"Rob Rix" forKey:@"name"];
-	[self.persistenceController saveContext:self.persistenceController.userInterfaceContext withCompletionHandler:^(NSError *error) {
-		if (error) {
-			NSLog(@"error: %@", error);
-		}
-	}];
 }
 
 

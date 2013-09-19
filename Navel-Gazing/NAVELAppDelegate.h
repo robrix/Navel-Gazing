@@ -2,8 +2,5 @@
 
 @import UIKit;
 
-@interface NAVELAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface NAVELAppDelegate : UIResponder
 @end
