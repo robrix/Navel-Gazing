@@ -3,10 +3,13 @@
 @import Foundation;
 
 #import "RXPromise.h"
+#import "RXViewModel.h"
 
 @interface RXCollectionController : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic) IBOutlet id<RXViewModel> viewModel;
 
 @property (nonatomic, copy) NSString *entityName;
 @property (nonatomic, copy) NSString *sortKey;

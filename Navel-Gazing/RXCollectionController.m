@@ -136,7 +136,9 @@
 	
 	UITableViewCell<RXModelView> *cell = [tableView dequeueReusableCellWithIdentifier:[self reuseIdentifierForObject:modelObject] forIndexPath:indexPath];
 	
-	[cell updateWithModelObject:modelObject];
+	self.viewModel.modelObject = modelObject;
+	
+	[cell updateWithModelObject:self.viewModel ?: modelObject];
 	
 	return cell;
 }

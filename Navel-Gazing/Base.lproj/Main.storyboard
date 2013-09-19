@@ -85,6 +85,7 @@
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTJ-DY-5Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="GxP-zY-lti" customClass="NAVELViewPerson"/>
                 <customObject id="IUx-MA-np6" userLabel="Users Model" customClass="RXCollectionController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
@@ -93,6 +94,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="tableView" destination="F42-Kn-BXM" id="OO1-WY-DuM"/>
+                        <outlet property="viewModel" destination="GxP-zY-lti" id="QsX-Gn-JzA"/>
                     </connections>
                 </customObject>
             </objects>
