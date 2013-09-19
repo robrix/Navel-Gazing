@@ -46,6 +46,7 @@
 			person.userName = userName;
 			person.name = details[@"name"];
 			person.emailAddress = details[@"email"];
+			person.avatarURLString = details[@"avatar_url"];
 			
 			[self.persistenceController saveContext:context withCompletionHandler:^(NSError *error) {
 				[resolver fulfillWithObject:person];

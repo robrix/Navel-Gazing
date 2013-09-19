@@ -14,6 +14,7 @@
         <relationship name="parents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="children" inverseEntity="Commit" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName="NAVELPerson" syncable="YES">
+        <attribute name="avatarURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="insertionDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,7 +30,7 @@
     <elements>
         <element name="Branch" positionX="-297" positionY="-162" width="128" height="88"/>
         <element name="Commit" positionX="-117" positionY="-43" width="128" height="133"/>
-        <element name="Person" positionX="-299" positionY="126" width="128" height="133"/>
+        <element name="Person" positionX="-299" positionY="126" width="128" height="148"/>
         <element name="Repository" positionX="-470" positionY="-63" width="128" height="88"/>
     </elements>
 </model>

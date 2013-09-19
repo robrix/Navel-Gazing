@@ -9,10 +9,12 @@
 @property (nonatomic, copy) NSString *emailAddress;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *userName;
+@property (nonatomic, copy) NSString *avatarURLString;
+@property (nonatomic, copy) NSURL *avatarURL;
+@property (nonatomic) NSDate *insertionDate;
+
 @property (nonatomic, copy) NSSet *commits;
 @property (nonatomic, copy) NSSet *repositories;
-
-@property (nonatomic) NSDate *insertionDate;
 
 @end
 
