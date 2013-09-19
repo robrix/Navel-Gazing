@@ -4,37 +4,26 @@
 
 @implementation UIView (RXModelMapping)
 
--(id)rx_objectValue {
+-(void)updateWithModelObject:(id)object {
 	[self doesNotRecognizeSelector:_cmd];
-	return nil;
 }
 
--(void)setRx_objectValue:(id)objectValue {
-	[self doesNotRecognizeSelector:_cmd];
-}
+-(void)cancelUpdating {}
 
 @end
 
 @implementation UILabel (RXModelMapping)
 
--(id)rx_objectValue {
-	return self.text;
-}
-
--(void)setRx_objectValue:(id)objectValue {
-	self.text = objectValue;
+-(void)updateWithModelObject:(id)object {
+	self.text = object;
 }
 
 @end
 
 @implementation UIImageView (RXModelMapping)
 
--(id)rx_objectValue {
-	return self.image;
-}
-
--(void)setRx_objectValue:(id)objectValue {
-	self.image = objectValue;
+-(void)updateWithModelObject:(id)object {
+	self.image = object;
 }
 
 @end

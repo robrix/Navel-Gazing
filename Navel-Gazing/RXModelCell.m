@@ -3,8 +3,6 @@
 #import "RXModelCell.h"
 #import "RXMemoization.h"
 
-#import "UIView+RXModelMapping.h"
-
 @interface RXModelCell ()
 
 @property (nonatomic) bool finishedLoading;
@@ -17,9 +15,16 @@
 
 -(void)updateWithModelObject:(id)object {
 	for (NSString *keyPath in self.maps) {
-		UIView *view = [self valueForKeyPath:keyPath];
+		UIView<RXModelView> *view = [self valueForKeyPath:keyPath];
 		id value = [object valueForKeyPath:self.maps[keyPath]];
-		view.rx_objectValue = value;
+		[view updateWithModelObject:value];
+	}
+}
+
+-(void)cancelUpdating {
+	for (NSString *keyPath in self.maps) {
+		UIView<RXModelView> *view = [self valueForKeyPath:keyPath];
+		[view cancelUpdating];
 	}
 }
 
@@ -29,6 +34,5 @@
 -(NSMutableDictionary *)maps {
 	return RXMemoize(_maps, [NSMutableDictionary new]);
 }
-
 
 @end

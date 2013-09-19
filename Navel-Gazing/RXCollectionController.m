@@ -143,6 +143,10 @@
 	return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell<RXModelView> *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	[cell cancelUpdating];
+}
+
 
 #pragma mark UITableViewDelegate
 

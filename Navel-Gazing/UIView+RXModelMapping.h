@@ -2,8 +2,7 @@
 
 @import UIKit;
 
-@interface UIView (RXModelMapping)
+#import "RXModelView.h"
 
-@property (nonatomic) id rx_objectValue;
-
+@interface UIView (RXModelMapping) <RXModelView>
 @end

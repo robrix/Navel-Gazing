@@ -5,5 +5,6 @@
 @protocol RXModelView <NSObject>
 
 -(void)updateWithModelObject:(id)object;
+-(void)cancelUpdating;
 
 @end

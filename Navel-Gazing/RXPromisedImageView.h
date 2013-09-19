@@ -5,4 +5,7 @@
 #import "RXPromise.h"
 
 @interface RXPromisedImageView : UIImageView
+
+@property (nonatomic) id<RXPromise> promisedImage;
+
 @end
