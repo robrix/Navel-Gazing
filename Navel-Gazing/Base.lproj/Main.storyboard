@@ -89,7 +89,7 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="entityName" value="Person"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="sortKey" value="name"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="sortKey" value="insertionDate"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="tableView" destination="F42-Kn-BXM" id="OO1-WY-DuM"/>
