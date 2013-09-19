@@ -37,6 +37,7 @@
 		D489B86117EA94190082BA63 /* UIView+RXModelMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86017EA94190082BA63 /* UIView+RXModelMapping.m */; };
 		D489B86517EA972A0082BA63 /* NAVELPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86417EA972A0082BA63 /* NAVELPersonCell.m */; };
 		D489B86B17EAA4220082BA63 /* NAVELViewPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86A17EAA4220082BA63 /* NAVELViewPerson.m */; };
+		D4C6C11717EAAC960000E04E /* NAVELRepositoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		D489B86617EAA3910082BA63 /* RXViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXViewModel.h; sourceTree = "<group>"; };
 		D489B86917EAA4220082BA63 /* NAVELViewPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELViewPerson.h; sourceTree = "<group>"; };
 		D489B86A17EAA4220082BA63 /* NAVELViewPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELViewPerson.m; sourceTree = "<group>"; };
+		D4C6C11517EAAC960000E04E /* NAVELRepositoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELRepositoryCell.h; sourceTree = "<group>"; };
+		D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepositoryCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +259,8 @@
 				D489B85D17EA93BD0082BA63 /* RXModelCell.m */,
 				D489B86317EA972A0082BA63 /* NAVELPersonCell.h */,
 				D489B86417EA972A0082BA63 /* NAVELPersonCell.m */,
+				D4C6C11517EAAC960000E04E /* NAVELRepositoryCell.h */,
+				D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */,
 				D489B85F17EA94190082BA63 /* UIView+RXModelMapping.h */,
 				D489B86017EA94190082BA63 /* UIView+RXModelMapping.m */,
 			);
@@ -374,6 +379,7 @@
 				D43A697717E92AF6006A1B03 /* main.m in Sources */,
 				D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */,
 				D43A69AD17E9363A006A1B03 /* RXMemoization.m in Sources */,
+				D4C6C11717EAAC960000E04E /* NAVELRepositoryCell.m in Sources */,
 				D43A69B717E942B6006A1B03 /* NAVELPerson.m in Sources */,
 				D43A69A917E935C5006A1B03 /* RXPersistenceController.m in Sources */,
 				D43A69B017E93786006A1B03 /* RXPromise.m in Sources */,

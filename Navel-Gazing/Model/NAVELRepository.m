@@ -12,6 +12,7 @@
 
 @implementation NAVELRepository
 
+@dynamic name;
 @dynamic urlString;
 @dynamic branches;
 @dynamic owner;
