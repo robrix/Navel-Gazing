@@ -12,6 +12,8 @@
 @property (nonatomic, copy) NSSet *commits;
 @property (nonatomic, copy) NSSet *repositories;
 
+@property (nonatomic) NSDate *insertionDate;
+
 @end
 
 @interface NAVELPerson (CoreDataGeneratedAccessors)

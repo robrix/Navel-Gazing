@@ -11,5 +11,12 @@
 @dynamic userName;
 @dynamic commits;
 @dynamic repositories;
+@dynamic insertionDate;
+
+-(void)awakeFromInsert {
+	[super awakeFromInsert];
+	
+	self.insertionDate = [NSDate date];
+}
 
 @end
