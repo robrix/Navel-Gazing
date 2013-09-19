@@ -3,7 +3,7 @@
 @import Foundation;
 
 @class RXPromiseResolver;
-typedef void(^RXPromiseThenBlock)(RXPromiseResolver *promiseResolver, id object);
+typedef void(^RXPromiseThenBlock)(RXPromiseResolver *resolver, id object);
 
 @protocol RXPromise <NSObject>
 
@@ -23,3 +23,6 @@ typedef void(^RXPromiseThenBlock)(RXPromiseResolver *promiseResolver, id object)
 @property (nonatomic, readonly) id<RXPromise> promise;
 
 @end
+
+
+id<RXPromise> RXPromiseForContentsOfURL(NSURL *URL);

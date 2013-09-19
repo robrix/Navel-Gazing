@@ -126,3 +126,13 @@
 }
 
 @end
+
+
+id<RXPromise> RXPromiseForContentsOfURL(NSURL *URL) {
+	RXPromiseResolver *resolver = [RXPromiseResolver new];
+	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+		[resolver fulfillWithObject:data];
+	}];
+	[task resume];
+	return resolver.promise;
+}
