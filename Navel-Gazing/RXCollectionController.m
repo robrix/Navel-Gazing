@@ -4,6 +4,7 @@
 #import "RXPersistenceController.h"
 #import "RXMemoization.h"
 #import "RXResponse.h"
+#import "RXModelView.h"
 
 @interface RXCollectionController () <NSFetchedResultsControllerDelegate>
 
@@ -87,7 +88,7 @@
 }
 
 -(NSString *)reuseIdentifierForObject:(id)object {
-	return self.reuseIdentifierKeyPath? [object valueForKeyPath:self.reuseIdentifierKeyPath] : @"user";
+	return self.reuseIdentifierKeyPath? [object valueForKeyPath:self.reuseIdentifierKeyPath] : self.defaultReuseIdentifier;
 }
 
 
@@ -133,8 +134,12 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self reuseIdentifierForObjectAtIndexPath:indexPath] forIndexPath:indexPath];
-	cell.textLabel.text = @"Name";
+	id modelObject = [self objectAtIndexPath:indexPath];
+	
+	UITableViewCell<RXModelView> *cell = [tableView dequeueReusableCellWithIdentifier:[self reuseIdentifierForObject:modelObject] forIndexPath:indexPath];
+	
+	[cell updateWithModelObject:modelObject];
+	
 	return cell;
 }
 

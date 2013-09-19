@@ -29,7 +29,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="user" id="FW9-3E-TIg">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="user" id="FW9-3E-TIg" customClass="NAVELPersonCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FW9-3E-TIg" id="Hgg-ax-G1b">
@@ -61,6 +61,13 @@
                                         <constraint firstItem="auB-rU-3k9" firstAttribute="leading" secondItem="Hgg-ax-G1b" secondAttribute="leading" constant="4" id="sSq-2A-qN0"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="maps.nameLabel" value="name"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="avatarView" destination="auB-rU-3k9" id="bh4-rv-edW"/>
+                                    <outlet property="nameLabel" destination="9hZ-w6-5qw" id="sTm-nf-Ac6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -79,6 +86,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTJ-DY-5Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="IUx-MA-np6" userLabel="Users Model" customClass="RXCollectionController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="tableView" destination="F42-Kn-BXM" id="OO1-WY-DuM"/>
                     </connections>

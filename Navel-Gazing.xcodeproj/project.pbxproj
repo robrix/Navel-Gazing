@@ -33,6 +33,9 @@
 		D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BF17E94457006A1B03 /* RXCollectionController.m */; };
 		D43A69CA17E94C60006A1B03 /* RXPromisedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */; };
 		D489B84E17EA87660082BA63 /* RXResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B84D17EA87660082BA63 /* RXResponse.m */; };
+		D489B85E17EA93BD0082BA63 /* RXModelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B85D17EA93BD0082BA63 /* RXModelCell.m */; };
+		D489B86117EA94190082BA63 /* UIView+RXModelMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86017EA94190082BA63 /* UIView+RXModelMapping.m */; };
+		D489B86517EA972A0082BA63 /* NAVELPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86417EA972A0082BA63 /* NAVELPersonCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,13 @@
 		D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXPromisedImageView.m; sourceTree = "<group>"; };
 		D489B84C17EA87660082BA63 /* RXResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXResponse.h; sourceTree = "<group>"; };
 		D489B84D17EA87660082BA63 /* RXResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXResponse.m; sourceTree = "<group>"; };
+		D489B85C17EA93BD0082BA63 /* RXModelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXModelCell.h; sourceTree = "<group>"; };
+		D489B85D17EA93BD0082BA63 /* RXModelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXModelCell.m; sourceTree = "<group>"; };
+		D489B85F17EA94190082BA63 /* UIView+RXModelMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RXModelMapping.h"; sourceTree = "<group>"; };
+		D489B86017EA94190082BA63 /* UIView+RXModelMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RXModelMapping.m"; sourceTree = "<group>"; };
+		D489B86217EA94B60082BA63 /* RXModelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXModelView.h; sourceTree = "<group>"; };
+		D489B86317EA972A0082BA63 /* NAVELPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELPersonCell.h; sourceTree = "<group>"; };
+		D489B86417EA972A0082BA63 /* NAVELPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELPersonCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,12 +157,12 @@
 		D43A697017E92AF6006A1B03 /* Navel-Gazing */ = {
 			isa = PBXGroup;
 			children = (
+				D43A69B117E94291006A1B03 /* Model */,
 				D43A69CB17E94C66006A1B03 /* View */,
 				D43A69A617E935A7006A1B03 /* Controller */,
 				D43A69AA17E93620006A1B03 /* Utilities */,
 				D43A697C17E92AF6006A1B03 /* Main.storyboard */,
 				D43A698817E92AF6006A1B03 /* Images.xcassets */,
-				D43A69B117E94291006A1B03 /* Model */,
 				D43A697F17E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld */,
 				D43A697117E92AF6006A1B03 /* Supporting Files */,
 			);
@@ -234,6 +244,13 @@
 			children = (
 				D43A69C817E94C60006A1B03 /* RXPromisedImageView.h */,
 				D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */,
+				D489B86217EA94B60082BA63 /* RXModelView.h */,
+				D489B85C17EA93BD0082BA63 /* RXModelCell.h */,
+				D489B85D17EA93BD0082BA63 /* RXModelCell.m */,
+				D489B86317EA972A0082BA63 /* NAVELPersonCell.h */,
+				D489B86417EA972A0082BA63 /* NAVELPersonCell.m */,
+				D489B85F17EA94190082BA63 /* UIView+RXModelMapping.h */,
+				D489B86017EA94190082BA63 /* UIView+RXModelMapping.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -338,10 +355,13 @@
 			files = (
 				D43A69B417E942B5006A1B03 /* NAVELCommit.m in Sources */,
 				D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */,
+				D489B85E17EA93BD0082BA63 /* RXModelCell.m in Sources */,
 				D43A69CA17E94C60006A1B03 /* RXPromisedImageView.m in Sources */,
 				D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */,
 				D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */,
+				D489B86117EA94190082BA63 /* UIView+RXModelMapping.m in Sources */,
 				D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */,
+				D489B86517EA972A0082BA63 /* NAVELPersonCell.m in Sources */,
 				D489B84E17EA87660082BA63 /* RXResponse.m in Sources */,
 				D43A697717E92AF6006A1B03 /* main.m in Sources */,
 				D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */,

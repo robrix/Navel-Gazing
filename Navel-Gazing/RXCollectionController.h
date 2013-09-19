@@ -8,6 +8,7 @@
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, copy) NSString *defaultReuseIdentifier;
 @property (nonatomic, copy) NSString *reuseIdentifierKeyPath;
 
 @end
