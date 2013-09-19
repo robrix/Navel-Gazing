@@ -18,7 +18,7 @@
 		NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
 		context.persistentStoreCoordinator = self.coordinator;
 		return context;
-	});
+	}());
 }
 
 
@@ -29,7 +29,7 @@
 		NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
 		context.parentContext = self.savingContext;
 		return context;
-	});
+	}());
 }
 
 
@@ -38,7 +38,7 @@
 -(NSManagedObjectModel *)model {
 	return RXMemoize(_model, ^{
 		return [NSManagedObjectModel mergedModelFromBundles:@[[NSBundle mainBundle]]];
-	});
+	}());
 }
 
 
@@ -51,7 +51,7 @@
 		NSError *error;
 		[coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
 		return coordinator;
-	});
+	}());
 }
 
 
