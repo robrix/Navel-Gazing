@@ -63,6 +63,7 @@
                                 </tableViewCellContentView>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="maps.nameLabel" value="name"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="maps.avatarView" value="promisedAvatar"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="avatarView" destination="auB-rU-3k9" id="bh4-rv-edW"/>
