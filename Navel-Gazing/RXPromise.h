@@ -2,10 +2,12 @@
 
 @import Foundation;
 
+#import "RXMonad.h"
+
 @class RXPromiseResolver;
 typedef void(^RXPromiseThenBlock)(RXPromiseResolver *resolver, id object);
 
-@protocol RXPromise <NSObject>
+@protocol RXPromise <RXMonad>
 
 -(instancetype)then:(RXPromiseThenBlock)block;
 
@@ -15,6 +17,7 @@ typedef void(^RXPromiseThenBlock)(RXPromiseResolver *resolver, id object);
 -(void)cancel;
 
 @end
+
 
 @interface RXPromiseResolver : NSObject
 
