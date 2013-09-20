@@ -38,6 +38,7 @@
 		D489B86517EA972A0082BA63 /* NAVELPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86417EA972A0082BA63 /* NAVELPersonCell.m */; };
 		D489B86B17EAA4220082BA63 /* NAVELViewPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86A17EAA4220082BA63 /* NAVELViewPerson.m */; };
 		D4A6D38117EC5A4C00B8F92E /* NAVELModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A6D38017EC5A4C00B8F92E /* NAVELModelController.m */; };
+		D4A6D38417EC9A5400B8F92E /* RXMaybe.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A6D38317EC9A5400B8F92E /* RXMaybe.m */; };
 		D4C6C11717EAAC960000E04E /* NAVELRepositoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,9 @@
 		D489B86A17EAA4220082BA63 /* NAVELViewPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELViewPerson.m; sourceTree = "<group>"; };
 		D4A6D37F17EC5A4C00B8F92E /* NAVELModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELModelController.h; sourceTree = "<group>"; };
 		D4A6D38017EC5A4C00B8F92E /* NAVELModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELModelController.m; sourceTree = "<group>"; };
+		D4A6D38217EC9A5400B8F92E /* RXMaybe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMaybe.h; sourceTree = "<group>"; };
+		D4A6D38317EC9A5400B8F92E /* RXMaybe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMaybe.m; sourceTree = "<group>"; };
+		D4A6D38517EC9A6B00B8F92E /* RXMonad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMonad.h; sourceTree = "<group>"; };
 		D4C6C11517EAAC960000E04E /* NAVELRepositoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELRepositoryCell.h; sourceTree = "<group>"; };
 		D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepositoryCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +237,9 @@
 				D43A69AC17E9363A006A1B03 /* RXMemoization.m */,
 				D489B84C17EA87660082BA63 /* RXResponse.h */,
 				D489B84D17EA87660082BA63 /* RXResponse.m */,
+				D4A6D38517EC9A6B00B8F92E /* RXMonad.h */,
+				D4A6D38217EC9A5400B8F92E /* RXMaybe.h */,
+				D4A6D38317EC9A5400B8F92E /* RXMaybe.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -378,6 +385,7 @@
 				D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */,
 				D489B86117EA94190082BA63 /* UIView+RXModelMapping.m in Sources */,
 				D489B86B17EAA4220082BA63 /* NAVELViewPerson.m in Sources */,
+				D4A6D38417EC9A5400B8F92E /* RXMaybe.m in Sources */,
 				D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */,
 				D4A6D38117EC5A4C00B8F92E /* NAVELModelController.m in Sources */,
 				D489B86517EA972A0082BA63 /* NAVELPersonCell.m in Sources */,
