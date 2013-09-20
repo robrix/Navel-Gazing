@@ -28,14 +28,14 @@
 	}];
 	
 	return [JSON then:^(RXPromiseResolver *resolver, NSDictionary *details) {
-		[self.persistenceController performOperationWithBlock:^(NSManagedObjectContext *context) {
+		[self.persistenceController performBackgroundOperationWithBlock:^(NSManagedObjectContext *context) {
 			NAVELPerson *person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
 			person.userName = userName;
 			person.name = details[@"name"];
 			person.emailAddress = details[@"email"];
 			person.avatarURLString = details[@"avatar_url"];
 			
-			[self.persistenceController saveContext:context withCompletionHandler:^(NSError *error) {
+			[[self.persistenceController persistChangesInContext:context] then:^(RXPromiseResolver *resolver, id object) {
 				[resolver fulfillWithObject:person];
 			}];
 		}];

@@ -2,6 +2,8 @@
 
 @import CoreData;
 
+#import "RXPromise.h"
+
 @interface RXPersistenceController : NSObject
 
 @property (nonatomic, readonly) NSManagedObjectContext *savingContext;
@@ -11,8 +13,8 @@
 
 @property (nonatomic, readonly) NSPersistentStoreCoordinator *coordinator;
 
--(void)performOperationWithBlock:(void(^)(NSManagedObjectContext *context))block;
+-(void)performBackgroundOperationWithBlock:(void(^)(NSManagedObjectContext *context))block;
 
--(void)saveContext:(NSManagedObjectContext *)context withCompletionHandler:(void(^)(NSError *error))completionHandler;
+-(id<RXPromise>)persistChangesInContext:(NSManagedObjectContext *)context;
 
 @end

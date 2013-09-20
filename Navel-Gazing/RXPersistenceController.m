@@ -2,6 +2,7 @@
 
 #import "RXPersistenceController.h"
 
+#import "RXMaybe.h"
 #import "RXMemoization.h"
 
 @interface RXPersistenceController ()
@@ -67,7 +68,7 @@
 	return context;
 }
 
--(void)performOperationWithBlock:(void(^)(NSManagedObjectContext *context))block {
+-(void)performBackgroundOperationWithBlock:(void(^)(NSManagedObjectContext *context))block {
 	NSManagedObjectContext *context = [self makeTemporaryContext];
 	[context performBlock:^{
 		block(context);
@@ -77,17 +78,20 @@
 
 #pragma mark Saving
 
--(void)saveContext:(NSManagedObjectContext *)context withCompletionHandler:(void(^)(NSError *error))completionHandler {
-	[context performBlock:^{
-		NSError *error;
-		bool didSave = [context save:&error];
-		NSManagedObjectContext *parentContext = context.parentContext;
-		if (didSave && parentContext != nil) {
-			[self saveContext:parentContext withCompletionHandler:completionHandler];
-		} else if (completionHandler) {
-			completionHandler(didSave? nil : error);
-		}
-	}];
+-(id<RXPromise>)persistChangesInContext:(NSManagedObjectContext *)context {
+	return (id<RXPromise>)RXMonadRecurse([RXJust just:context], ^id<RXPromise>(NSManagedObjectContext *context) {
+		if (!context)
+			return nil;
+		RXPromiseResolver *resolver = [RXPromiseResolver new];
+		[context performBlock:^{
+			NSError *error;
+			id<RXMaybe> maybeSaved = [context save:&error]?
+			[RXJust just:context.parentContext]
+			:	[RXNothing nothing:error];
+			[resolver fulfillWithObject:maybeSaved];
+		}];
+		return resolver.promise;
+	});
 }
 
 @end
