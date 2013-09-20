@@ -30,5 +30,8 @@ typedef id<RXMaybe> (^RXMaybeBlock)(id object);
 @interface RXNothing : NSObject <RXMaybe>
 
 +(instancetype)nothing;
++(instancetype)nothing:(NSError *)error;
+
+@property (nonatomic, readonly) NSError *error;
 
 @end

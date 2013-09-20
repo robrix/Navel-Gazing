@@ -15,6 +15,7 @@
 	return self;
 }
 
+
 #pragma mark RXMonad
 
 +(instancetype)unit:(id)value {
@@ -24,6 +25,9 @@
 -(id<RXMaybe>)bind:(RXMaybeBlock)block {
 	return [self then:block];
 }
+
+
+#pragma mark RXMaybe
 
 -(id<RXMaybe>)then:(RXMaybeBlock)block {
 	return block(self.object);
@@ -47,22 +51,39 @@
 	return nothing;
 }
 
++(instancetype)nothing:(NSError *)error {
+	return error? [[self alloc] initWithError:error] : [self nothing];
+}
+
+-(instancetype)initWithError:(NSError *)error {
+	if ((self = [super init])) {
+		_error = error;
+	}
+	return self;
+}
+
+
 #pragma mark RXMonad
 
 +(instancetype)unit:(id)value {
 	return [self nothing];
++(instancetype)unit:(NSError *)error {
+	return [self nothing:error];
 }
 
 -(id<RXMaybe>)bind:(RXMaybeBlock)block {
 	return self;
 }
 
+
+#pragma mark RXMaybe
+
 -(id<RXMaybe>)then:(RXMaybeBlock)block {
 	return self;
 }
 
 -(id<RXMaybe>)else:(RXMaybeBlock)block {
-	return block(self);
+	return block(self.error);
 }
 
 @end
