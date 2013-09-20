@@ -9,6 +9,7 @@ typedef void(^RXPromiseThenBlock)(RXPromise *promise, id object);
 
 @interface RXPromise : NSObject <RXMonad>
 
++(instancetype)promiseForContentsOfURLRequest:(NSURLRequest *)request;
 +(instancetype)promiseForContentsOfURL:(NSURL *)URL;
 
 -(instancetype)then:(RXPromiseThenBlock)block;

@@ -27,6 +27,15 @@
 
 @implementation RXPromise
 
++(instancetype)promiseForContentsOfURLRequest:(NSURLRequest *)request {
+	RXPromise *promise = [RXPromise new];
+	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+		[promise fulfillWithObject:data];
+	}];
+	[task resume];
+	return promise;
+}
+
 +(instancetype)promiseForContentsOfURL:(NSURL *)URL {
 	RXPromise *promise = [RXPromise new];
 	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
