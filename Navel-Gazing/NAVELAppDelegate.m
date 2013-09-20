@@ -2,6 +2,7 @@
 
 #import "NAVELAppDelegate.h"
 
+#import "NAVELModelController.h"
 #import "RXPersistenceController.h"
 #import "RXPromise.h"
 #import "RXResponse.h"
@@ -12,6 +13,7 @@
 
 @property (nonatomic) UIAlertView *userPrompt;
 
+@property (nonatomic) NAVELModelController *modelController;
 @property (nonatomic) RXPersistenceController *persistenceController;
 
 @end
@@ -22,6 +24,7 @@
 
 -(void)applicationDidFinishLaunching:(UIApplication *)application {
 	self.persistenceController = [RXPersistenceController new];
+	self.modelController = [[NAVELModelController alloc] initWithPersistenceController:self.persistenceController];
 }
 
 
@@ -34,25 +37,7 @@
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	NSString *userName = [alertView textFieldAtIndex:0].text;
-	id<RXPromise> details = RXPromiseForContentsOfURL([[NSURL URLWithString:@"https://api.github.com/users/"] URLByAppendingPathComponent:userName]);
-	
-	id<RXPromise> JSON = [details then:^(RXPromiseResolver *resolver, NSData *data) {
-		[resolver fulfillWithObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
-	}];
-	
-	[JSON then:^(RXPromiseResolver *resolver, NSDictionary *details) {
-		[self.persistenceController performOperationWithBlock:^(NSManagedObjectContext *context) {
-			NAVELPerson *person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
-			person.userName = userName;
-			person.name = details[@"name"];
-			person.emailAddress = details[@"email"];
-			person.avatarURLString = details[@"avatar_url"];
-			
-			[self.persistenceController saveContext:context withCompletionHandler:^(NSError *error) {
-				[resolver fulfillWithObject:person];
-			}];
-		}];
-	}];
+	[self.modelController promiseForUserWithName:userName];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {

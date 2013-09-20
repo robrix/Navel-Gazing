@@ -68,7 +68,7 @@
                                 <connections>
                                     <outlet property="avatarView" destination="auB-rU-3k9" id="bh4-rv-edW"/>
                                     <outlet property="nameLabel" destination="9hZ-w6-5qw" id="sTm-nf-Ac6"/>
-                                    <segue destination="xTL-Yu-qqy" kind="push" id="Eyc-a5-Qja"/>
+                                    <segue destination="xTL-Yu-qqy" kind="push" id="63p-kN-0as"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -184,10 +184,33 @@
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="oBu-dm-pkk" kind="relationship" relationship="rootViewController" id="mNk-hr-AAs"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-366" y="248"/>
+            <point key="canvasLocation" x="65" y="248"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7jA-l9-i2b">
+            <objects>
+                <viewController id="oBu-dm-pkk" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qn8-io-2GC"/>
+                        <viewControllerLayoutGuide type="bottom" id="EUr-ox-PS8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bs-as-orL">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BAN-Ok-X3K"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jh6-jy-WDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876" y="248"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
