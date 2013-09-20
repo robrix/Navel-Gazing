@@ -6,14 +6,14 @@
 
 @protocol RXMaybe;
 
-typedef id<RXMaybe> (^RXMaybeBindBlock)(id object);
+typedef id<RXMaybe> (^RXMaybeBlock)(id object);
 
 @protocol RXMaybe <RXMonad>
 
--(id<RXMaybe>)bind:(RXMaybeBindBlock)block;
+-(id<RXMaybe>)bind:(RXMaybeBlock)block;
 
--(id<RXMaybe>)then:(RXMaybeBindBlock)block;
--(id<RXMaybe>)else:(RXMaybeBindBlock)block;
+-(id<RXMaybe>)then:(RXMaybeBlock)block;
+-(id<RXMaybe>)else:(RXMaybeBlock)block;
 
 @end
 

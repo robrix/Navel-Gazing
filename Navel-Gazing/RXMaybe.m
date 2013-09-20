@@ -21,15 +21,15 @@
 	return [self just:value];
 }
 
--(id<RXMaybe>)bind:(RXMaybeBindBlock)block {
+-(id<RXMaybe>)bind:(RXMaybeBlock)block {
 	return [self then:block];
 }
 
--(id<RXMaybe>)then:(RXMaybeBindBlock)block {
+-(id<RXMaybe>)then:(RXMaybeBlock)block {
 	return block(self.object);
 }
 
--(id<RXMaybe>)else:(RXMaybeBindBlock)block {
+-(id<RXMaybe>)else:(RXMaybeBlock)block {
 	return self;
 }
 
@@ -53,15 +53,15 @@
 	return [self nothing];
 }
 
--(id<RXMaybe>)bind:(RXMaybeBindBlock)block {
+-(id<RXMaybe>)bind:(RXMaybeBlock)block {
 	return self;
 }
 
--(id<RXMaybe>)then:(RXMaybeBindBlock)block {
+-(id<RXMaybe>)then:(RXMaybeBlock)block {
 	return self;
 }
 
--(id<RXMaybe>)else:(RXMaybeBindBlock)block {
+-(id<RXMaybe>)else:(RXMaybeBlock)block {
 	return block(self);
 }
 
