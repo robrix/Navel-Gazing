@@ -94,3 +94,10 @@ id<RXMaybe> RXMaybeObject(RXMaybeObjectBlock block) {
 		[RXJust just:object]
 	:	[RXNothing nothing:error];
 }
+
+id<RXMaybe> RXMaybeBoolean(RXMaybeBooleanBlock block) {
+	return RXMaybeObject(^id(NSError *__autoreleasing *error) {
+		bool result = block(error);
+		return result? @YES : nil;
+	});
+}

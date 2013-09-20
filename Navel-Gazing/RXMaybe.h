@@ -43,3 +43,13 @@ typedef id (^RXMaybeObjectBlock)(NSError * __autoreleasing *error);
  @return `RXJust` wrapping the object returned by the block if non-nil, or `RXNothing` wrapping the error otherwise.
  */
 extern id<RXMaybe> RXMaybeObject(RXMaybeObjectBlock block);
+
+typedef bool (^RXMaybeBooleanBlock)(NSError * __autoreleasing *error);
+
+/**
+ Convenience for NSError ** parameter-receiving idioms returning a boolean value.
+ 
+ @param block A block taking a parameter of type `NSError **` and returning a boolean value.
+ @return `RXJust` wrapping `@YES` if the block returned YES, or `RXNothing` wrapping the error otherwise.
+ */
+extern id<RXMaybe> RXMaybeBoolean(RXMaybeBooleanBlock block);
