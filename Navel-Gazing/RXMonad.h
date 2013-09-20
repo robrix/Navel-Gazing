@@ -7,10 +7,13 @@
 @protocol RXMonad;
 
 typedef id<RXMonad> (^RXMonadBlock)(id value);
-typedef id<RXMonad> (^RXMonadMapBlock)(id<RXMonad> monad);
-typedef id (^RXMonadFunctionBlock)(id object);
+typedef id<RXMonad> (^RXUnaryMonadBlock)(id<RXMonad> monad);
+typedef id (^RXFunctionBlock)(id object);
+typedef RXFunctionBlock RXUnaryFunctionBlock;;
+typedef id (^RXBinaryFunctionBlock)(id a, id b);
+typedef id<RXMonad> (^RXBinaryMonadBlock)(id<RXMonad> a, id<RXMonad> b);
 
-extern RXMonadFunctionBlock RXIdentityBlock;
+extern RXFunctionBlock RXIdentityBlock;
 
 
 @protocol RXMonad <NSObject>
@@ -31,6 +34,10 @@ extern RXMonadFunctionBlock RXIdentityBlock;
  */
 extern RXMonadBlock RXMonadUnit(Class<RXMonad> monad);
 extern id<RXMonad> RXMonadBind(id<RXMonad> monad, RXMonadBlock block);
-extern id<RXMonad> RXMonadJoin(id<RXMonad> monad);
 
-extern RXMonadMapBlock RXMonadFunctionMap(Class<RXMonad> type, RXMonadFunctionBlock block);
+extern id<RXMonad> RXMonadJoin(id<RXMonad> monad);
+extern RXUnaryMonadBlock RXMonadFunctionMap(Class<RXMonad> type, RXFunctionBlock block);
+
+extern id<RXMonad> RXMonadPipeline(id<RXMonad> monad, NSArray *functions);
+
+extern RXBinaryMonadBlock RXMonadLiftBinary(Class<RXMonad> type, RXBinaryFunctionBlock block);
