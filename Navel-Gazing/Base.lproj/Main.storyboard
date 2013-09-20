@@ -78,7 +78,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="2ca-Xp-z4e">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Q9P-7o-Jd3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="Q9P-7o-Jd3">
                             <connections>
                                 <action selector="createUser:" destination="jTJ-DY-5Qh" id="fkj-5B-Ofu"/>
                             </connections>
