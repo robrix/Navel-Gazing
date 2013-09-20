@@ -24,9 +24,7 @@
 }
 
 -(RXPromise *)promiseForUserWithName:(NSString *)userName {
-	RXPromise *details = [[[self.resourceController resourceAtRelativePath:@"users"] resourceAtRelativePath:userName] promiseForContents];
-	
-	RXMonadPipeline([[[self.resourceController resourceAtRelativePath:@"users"] resourceAtRelativePath:userName] promiseForContents], @[]);
+	RXPromise *details = [[[self.resourceController subresourceWithPath:@"users"] subresourceWithPath:userName] promiseForContents];
 	
 	RXPromise *JSON = [details then:^(RXPromise *resolver, NSData *data) {
 		[resolver fulfillWithObject:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];

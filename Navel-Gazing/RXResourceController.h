@@ -6,10 +6,12 @@
 
 @interface RXResourceController : NSObject
 
--(instancetype)initWithBaseURL:(NSURL *)URL;
+-(instancetype)initWithURL:(NSURL *)URL;
 
--(instancetype)resourceAtRelativePath:(NSString *)resource;
+-(instancetype)subresourceWithPath:(NSString *)resource;
 
 -(RXPromise *)promiseForContents;
+
+@property (nonatomic) NSURLRequest *URLRequestTemplate;
 
 @end

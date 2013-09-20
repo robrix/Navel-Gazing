@@ -27,11 +27,14 @@
 	self.persistenceController = [RXPersistenceController new];
 	
 	bool online = NO;
-	NSURL *baseURL = online?
+	NSURL *URL = online?
 		[NSURL URLWithString:@"https://api.github.com/"]
 	:	[[NSBundle mainBundle] URLForResource:@"static-api" withExtension:nil];
 	
-	RXResourceController *resourceController = [[RXResourceController alloc] initWithBaseURL:baseURL];
+	RXResourceController *resourceController = [[RXResourceController alloc] initWithURL:URL];
+	NSMutableURLRequest *requestTemplate = [NSMutableURLRequest requestWithURL:URL];
+	[requestTemplate addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+	resourceController.URLRequestTemplate = requestTemplate;
 	
 	self.modelController = [[NAVELModelController alloc] initWithResourceController:resourceController persistenceController:self.persistenceController];
 }
