@@ -48,10 +48,10 @@
 -(NSFetchedResultsController *)fetchedResultsController {
 	return self.context?
 		RXMemoize(_fetchedResultsController, ^{
-		NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.request managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
-		fetchedResultsController.delegate = self;
-		return fetchedResultsController;
-	}())
+			NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.request managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
+			fetchedResultsController.delegate = self;
+			return fetchedResultsController;
+		}())
 	:	nil;
 }
 
@@ -61,7 +61,7 @@
 		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:self.sortKey ascending:YES]];
 		return request;
 	}());
-	RXMemoize(self.context, RXResponseToMessage(@selector(requestUserInterfaceContext:), self.tableView));
+	RXMemoize(self.context, RXResponseToMessage(@selector(respondWithUserInterfaceContext:), self.tableView));
 	
 	NSError *error;
 	if (![self.fetchedResultsController performFetch:&error]) {

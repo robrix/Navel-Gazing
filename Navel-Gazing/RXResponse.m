@@ -23,10 +23,10 @@
 
 @implementation UIResponder (RXFirstResponder)
 
--(IBAction)requestFirstResponder:(id<RXRequester>)requester {
+-(IBAction)respondWithFirstResponder:(id<RXRequester>)requester {
 	return self.isFirstResponder?
 		[requester acceptResponse:self]
-	:	[self.nextResponder requestFirstResponder:requester];
+	:	[self.nextResponder respondWithFirstResponder:requester];
 }
 
 @end

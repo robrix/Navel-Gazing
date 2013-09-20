@@ -10,7 +10,7 @@
 
 #import "NAVELPerson.h"
 
-@interface NAVELAppDelegate () <UIApplicationDelegate, UIAlertViewDelegate, UITextFieldDelegate, RXUserInterfaceContextResponder>
+@interface NAVELAppDelegate () <UIApplicationDelegate, RXUserInterfaceContextResponder, RXUserInterfaceContextResponder, NAVELModelControllerResponder>
 
 @property (nonatomic) UIAlertView *userPrompt;
 
@@ -40,27 +40,17 @@
 }
 
 
--(IBAction)createUser:(id)sender {
-	self.userPrompt = [[UIAlertView alloc] initWithTitle:@"Add User" message:@"Enter the name of the user to add." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
-	self.userPrompt.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[self.userPrompt textFieldAtIndex:0].delegate = self;
-	[self.userPrompt show];
-}
+#pragma mark RXUserInterfaceContextResponder
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	NSString *userName = [alertView textFieldAtIndex:0].text;
-	[self.modelController promiseForUserWithName:userName];
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField {
-	[self.userPrompt dismissWithClickedButtonIndex:[self.userPrompt firstOtherButtonIndex] animated:YES];
-}
-
-
-#pragma mark RXModelClientResponder
-
--(void)requestUserInterfaceContext:(id<RXRequester>)requester {
+-(void)respondWithUserInterfaceContext:(id<RXRequester>)requester {
 	[requester acceptResponse:self.persistenceController.userInterfaceContext];
+}
+
+
+#pragma mark NAVELModelControllerResponder
+
+-(void)respondWithModelController:(id<RXRequester>)requester {
+	[requester acceptResponse:self.modelController];
 }
 
 @end

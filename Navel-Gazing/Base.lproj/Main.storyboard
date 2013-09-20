@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="448" y="-630"/>
         </scene>
-        <!--Users-->
+        <!--Users View Controller-->
         <scene sceneID="1HR-2J-e3a">
             <objects>
-                <tableViewController id="UAi-MU-NEq" userLabel="Users" sceneMemberID="viewController">
+                <tableViewController id="UAi-MU-NEq" userLabel="Users View Controller" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="F42-Kn-BXM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,15 +80,16 @@
                     <navigationItem key="navigationItem" title="Users" id="2ca-Xp-z4e">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="Q9P-7o-Jd3">
                             <connections>
-                                <action selector="createUser:" destination="jTJ-DY-5Qh" id="fkj-5B-Ofu"/>
+                                <action selector="createUser:" destination="ug2-FX-qdC" id="JCq-wV-pmn"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="tJZ-C9-cyL"/>
                     </navigationItem>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTJ-DY-5Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="GxP-zY-lti" customClass="NAVELViewPerson"/>
-                <customObject id="IUx-MA-np6" userLabel="Users Model" customClass="RXCollectionController">
+                <customObject id="IUx-MA-np6" userLabel="Users Collection" customClass="RXCollectionController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="entityName" value="Person"/>
@@ -97,6 +98,11 @@
                     <connections>
                         <outlet property="tableView" destination="F42-Kn-BXM" id="OO1-WY-DuM"/>
                         <outlet property="viewModel" destination="GxP-zY-lti" id="QsX-Gn-JzA"/>
+                    </connections>
+                </customObject>
+                <customObject id="ug2-FX-qdC" userLabel="Users Controller" customClass="NAVELUsersController">
+                    <connections>
+                        <outlet property="viewController" destination="UAi-MU-NEq" id="xDE-P1-ULM"/>
                     </connections>
                 </customObject>
             </objects>
