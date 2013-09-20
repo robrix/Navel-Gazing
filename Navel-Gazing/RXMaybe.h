@@ -35,3 +35,6 @@ typedef id<RXMaybe> (^RXMaybeBlock)(id object);
 @property (nonatomic, readonly) NSError *error;
 
 @end
+
+typedef id (^RXMaybeErrorBlock)(NSError * __autoreleasing *error);
+extern id<RXMaybe> RXMaybe(RXMaybeErrorBlock block);

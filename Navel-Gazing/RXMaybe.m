@@ -65,8 +65,6 @@
 
 #pragma mark RXMonad
 
-+(instancetype)unit:(id)value {
-	return [self nothing];
 +(instancetype)unit:(NSError *)error {
 	return [self nothing:error];
 }
@@ -87,3 +85,12 @@
 }
 
 @end
+
+
+id<RXMaybe> RXMaybe(RXMaybeErrorBlock block) {
+	NSError *error;
+	id object = block(&error);
+	return object?
+		[RXJust just:object]
+	:	[RXNothing nothing:error];
+}
