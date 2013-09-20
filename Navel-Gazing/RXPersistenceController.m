@@ -76,21 +76,22 @@
 }
 
 
-#pragma mark Saving
+#pragma mark Persisting
 
--(id<RXPromise>)persistChangesInContext:(NSManagedObjectContext *)context {
-	return (id<RXPromise>)RXMonadRecurse([RXJust just:context], ^id<RXPromise>(NSManagedObjectContext *context) {
-		if (!context)
+-(RXPromise *)persistChangesInContext:(NSManagedObjectContext *)rootContext {
+	return (RXPromise *)RXMonadRecurse([RXJust just:[RXJust just:rootContext]], ^RXPromise *(id<RXMaybe> maybeContext) {
+		
+		RXPromise *promise = [RXPromise new];
+		[maybeContext bind:^id(NSManagedObjectContext *context) {
+			[context performBlock:^{
+				NSError *error;
+				[promise fulfillWithObject:[context save:&error]?
+					[RXJust just:context.parentContext]
+				:	[RXNothing nothing:error]];
+			}];
 			return nil;
-		RXPromiseResolver *resolver = [RXPromiseResolver new];
-		[context performBlock:^{
-			NSError *error;
-			id<RXMaybe> maybeSaved = [context save:&error]?
-			[RXJust just:context.parentContext]
-			:	[RXNothing nothing:error];
-			[resolver fulfillWithObject:maybeSaved];
 		}];
-		return resolver.promise;
+		return promise;
 	});
 }
 

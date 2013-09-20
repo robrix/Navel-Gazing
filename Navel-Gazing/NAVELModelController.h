@@ -2,12 +2,12 @@
 
 #import "RXPromise.h"
 
-@class RXPersistenceController;
+@class RXPersistenceController, RXResourceController;
 
 @interface NAVELModelController : NSObject
 
--(instancetype)initWithPersistenceController:(RXPersistenceController *)persistenceController;
+-(instancetype)initWithResourceController:(RXResourceController *)resourceController persistenceController:(RXPersistenceController *)persistenceController;
 
--(id<RXPromise>)promiseForUserWithName:(NSString *)userName;
+-(RXPromise *)promiseForUserWithName:(NSString *)userName;
 
 @end

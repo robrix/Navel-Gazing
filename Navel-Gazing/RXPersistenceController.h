@@ -15,6 +15,6 @@
 
 -(void)performBackgroundOperationWithBlock:(void(^)(NSManagedObjectContext *context))block;
 
--(id<RXPromise>)persistChangesInContext:(NSManagedObjectContext *)context;
+-(RXPromise *)persistChangesInContext:(NSManagedObjectContext *)context;
 
 @end

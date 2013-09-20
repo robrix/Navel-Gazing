@@ -2,16 +2,16 @@
 
 #import "RXPromise.h"
 
-@interface RXDependentPromise : RXPromiseResolver
+@interface RXDependentPromise : RXPromise
 
--(instancetype)initWithDependency:(id<RXPromise>)parent block:(RXPromiseThenBlock)block;
+-(instancetype)initWithDependency:(RXPromise *)parent block:(RXPromiseThenBlock)block;
 
 -(void)observeFulfillmentOfDependencyWithObject:(id)object;
 
 @end
 
 
-@interface RXPromiseResolver () <RXPromise>
+@interface RXPromise ()
 
 @property (nonatomic, readonly) dispatch_queue_t queue;
 
@@ -25,7 +25,16 @@
 
 @end
 
-@implementation RXPromiseResolver
+@implementation RXPromise
+
++(instancetype)promiseForContentsOfURL:(NSURL *)URL {
+	RXPromise *promise = [RXPromise new];
+	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+		[promise fulfillWithObject:data];
+	}];
+	[task resume];
+	return promise;
+}
 
 -(instancetype)init {
 	if ((self = [super init])) {
@@ -33,11 +42,6 @@
 		
 		_dependants = [NSMutableSet new];
 	}
-	return self;
-}
-
-
--(id<RXPromise>)promise {
 	return self;
 }
 
@@ -96,10 +100,10 @@
 }
 
 -(id<RXMonad>)bind:(RXMonadUnitFunction)block {
-	return [self then:^(RXPromiseResolver *resolver, id object) {
+	return [self then:^(RXPromise *promise, id object) {
 		[block(object) bind:^id<RXMonad>(id value) {
-			[resolver fulfillWithObject:value];
-			return resolver.promise;
+			[promise fulfillWithObject:value];
+			return promise;
 		}];
 	}];
 }
@@ -109,14 +113,14 @@
 
 @interface RXDependentPromise ()
 
-@property (nonatomic, weak) id<RXPromise> dependency;
+@property (nonatomic, weak) RXPromise *dependency;
 @property (nonatomic, copy) RXPromiseThenBlock block;
 
 @end
 
 @implementation RXDependentPromise
 
--(instancetype)initWithDependency:(id<RXPromise>)dependency block:(RXPromiseThenBlock)block {
+-(instancetype)initWithDependency:(RXPromise *)dependency block:(RXPromiseThenBlock)block {
 	if ((self = [super init])) {
 		_dependency = dependency;
 		
@@ -143,12 +147,3 @@
 
 @end
 
-
-id<RXPromise> RXPromiseForContentsOfURL(NSURL *URL) {
-	RXPromiseResolver *resolver = [RXPromiseResolver new];
-	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-		[resolver fulfillWithObject:data];
-	}];
-	[task resume];
-	return resolver.promise;
-}

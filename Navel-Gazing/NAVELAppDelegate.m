@@ -4,6 +4,7 @@
 
 #import "NAVELModelController.h"
 #import "RXPersistenceController.h"
+#import "RXResourceController.h"
 #import "RXPromise.h"
 #import "RXResponse.h"
 
@@ -24,7 +25,15 @@
 
 -(void)applicationDidFinishLaunching:(UIApplication *)application {
 	self.persistenceController = [RXPersistenceController new];
-	self.modelController = [[NAVELModelController alloc] initWithPersistenceController:self.persistenceController];
+	
+	bool online = NO;
+	NSURL *baseURL = online?
+		[NSURL URLWithString:@"https://api.github.com/"]
+	:	[[NSBundle mainBundle] URLForResource:@"static-api" withExtension:nil];
+	
+	RXResourceController *resourceController = [[RXResourceController alloc] initWithBaseURL:baseURL];
+	
+	self.modelController = [[NAVELModelController alloc] initWithResourceController:resourceController persistenceController:self.persistenceController];
 }
 
 

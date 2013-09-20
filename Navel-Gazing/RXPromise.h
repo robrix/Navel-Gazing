@@ -4,10 +4,12 @@
 
 #import "RXMonad.h"
 
-@class RXPromiseResolver;
-typedef void(^RXPromiseThenBlock)(RXPromiseResolver *resolver, id object);
+@class RXPromise;
+typedef void(^RXPromiseThenBlock)(RXPromise *promise, id object);
 
-@protocol RXPromise <RXMonad>
+@interface RXPromise : NSObject <RXMonad>
+
++(instancetype)promiseForContentsOfURL:(NSURL *)URL;
 
 -(instancetype)then:(RXPromiseThenBlock)block;
 
@@ -16,16 +18,6 @@ typedef void(^RXPromiseThenBlock)(RXPromiseResolver *resolver, id object);
  */
 -(void)cancel;
 
-@end
-
-
-@interface RXPromiseResolver : NSObject
-
 -(void)fulfillWithObject:(id)object;
 
-@property (nonatomic, readonly) id<RXPromise> promise;
-
 @end
-
-
-id<RXPromise> RXPromiseForContentsOfURL(NSURL *URL);

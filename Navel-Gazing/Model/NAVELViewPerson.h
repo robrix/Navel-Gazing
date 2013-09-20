@@ -7,6 +7,6 @@
 
 @property (nonatomic, readonly) NSString *name;
 
-@property (nonatomic, readonly) id<RXPromise> promisedAvatar;
+@property (nonatomic, readonly) RXPromise *promisedAvatar;
 
 @end

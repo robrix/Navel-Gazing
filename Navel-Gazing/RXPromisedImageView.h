@@ -6,6 +6,6 @@
 
 @interface RXPromisedImageView : UIImageView
 
-@property (nonatomic) id<RXPromise> promisedImage;
+@property (nonatomic) RXPromise *promisedImage;
 
 @end

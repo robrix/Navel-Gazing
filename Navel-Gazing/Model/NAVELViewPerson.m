@@ -22,9 +22,9 @@
 	return self.person.name ?: self.person.userName;
 }
 
--(id<RXPromise>)promisedAvatar {
+-(RXPromise *)promisedAvatar {
 	return self.person.avatarURL?
-		[RXPromiseForContentsOfURL(self.person.avatarURL) then:^(RXPromiseResolver *resolver, NSData *data) {
+		[[RXPromise promiseForContentsOfURL:self.person.avatarURL] then:^(RXPromise *resolver, NSData *data) {
 			[resolver fulfillWithObject:[[UIImage alloc] initWithData:data]];
 		}]
 	:	nil;
