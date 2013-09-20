@@ -10,8 +10,6 @@ typedef id<RXMaybe> (^RXMaybeBlock)(id object);
 
 @protocol RXMaybe <RXMonad>
 
--(id<RXMaybe>)bind:(RXMaybeBlock)block;
-
 -(id<RXMaybe>)then:(RXMaybeBlock)block;
 -(id<RXMaybe>)else:(RXMaybeBlock)block;
 
@@ -36,5 +34,12 @@ typedef id<RXMaybe> (^RXMaybeBlock)(id object);
 
 @end
 
-typedef id (^RXMaybeErrorBlock)(NSError * __autoreleasing *error);
-extern id<RXMaybe> RXMaybe(RXMaybeErrorBlock block);
+typedef id (^RXMaybeObjectBlock)(NSError * __autoreleasing *error);
+
+/**
+ Convenience for NSError ** parameter-receiving idioms returning an object.
+ 
+ @param block A block taking a parameter of type `NSError **` and returning an object.
+ @return `RXJust` wrapping the object returned by the block if non-nil, or `RXNothing` wrapping the error otherwise.
+ */
+extern id<RXMaybe> RXMaybeObject(RXMaybeObjectBlock block);

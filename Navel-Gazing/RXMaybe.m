@@ -22,8 +22,8 @@
 	return [self just:value];
 }
 
--(id<RXMaybe>)bind:(RXMaybeBlock)block {
-	return [self then:block];
+-(id<RXMonad>)bind:(RXMonadUnitFunction)block {
+	return block(self.object);
 }
 
 
@@ -87,7 +87,7 @@
 @end
 
 
-id<RXMaybe> RXMaybe(RXMaybeErrorBlock block) {
+id<RXMaybe> RXMaybeObject(RXMaybeObjectBlock block) {
 	NSError *error;
 	id object = block(&error);
 	return object?
