@@ -95,7 +95,7 @@
 	return nil;
 }
 
--(id<RXMonad>)bind:(RXMonadBlock)block {
+-(id<RXMonad>)bind:(RXMonadUnitFunction)block {
 	return [self then:^(RXPromiseResolver *resolver, id object) {
 		[block(object) bind:^id<RXMonad>(id value) {
 			[resolver fulfillWithObject:value];
