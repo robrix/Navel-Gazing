@@ -5,23 +5,6 @@
 RXFunctionBlock RXIdentityBlock = ^(id x){return x;};
 
 
-//RXMonadBlock RXMonadBlockWithAction(id target, SEL selector) {
-//	return ^id<RXMonad>(id object){
-//		return [target performSelector:selector withObject:object];
-//	};
-//}
-
-RXMonadBlock RXMonadUnit(Class<RXMonad> monad) {
-	return ^(id object){
-		return [monad unit:object];
-	};
-}
-
-id<RXMonad> RXMonadBind(id<RXMonad> monad, RXMonadBlock block) {
-	return [monad bind:block];
-}
-
-
 id<RXMonad> RXMonadJoin(id<RXMonad> monad) {
 	return [monad bind:RXIdentityBlock];
 }
@@ -36,10 +19,23 @@ RXUnaryMonadBlock RXMonadFunctionMap(Class<RXMonad> type, RXFunctionBlock block)
 
 
 id<RXMonad> RXMonadPipeline(id<RXMonad> monad, NSArray *functions) {
-	for (RXMonadBlock block in functions) {
+	for (RXMonadUnitFunction block in functions) {
 		monad = [monad bind:block];
 	}
 	return monad;
+}
+
+
+id<RXMonad> RXMonadRecurse(id<RXMonad> m, RXMonadUnitFunction f) {
+	return RXMonadRecurseWhile(m, ^bool(id x) { return x != nil; }, f);
+}
+
+id<RXMonad> RXMonadRecurseWhile(id<RXMonad> m, bool(^predicate)(id x), RXMonadUnitFunction f) {
+	return [m bind:^id<RXMonad>(id x) {
+		return predicate(x)?
+			RXMonadRecurse(f(x), f)
+		:	nil;
+	}];
 }
 
 
@@ -52,3 +48,11 @@ RXBinaryMonadBlock RXMonadLiftBinary(Class<RXMonad> type, RXBinaryFunctionBlock 
 		}];
 	};
 }
+
+
+const RXMonadicType RXIdentity = {
+	.unit = ^(id x){ return x; },
+	.bind = ^(id<RXMonad> m, RXMonadUnitFunction f) {
+		return f(m);
+	}
+};
