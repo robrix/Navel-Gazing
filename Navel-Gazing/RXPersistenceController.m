@@ -79,8 +79,11 @@
 #pragma mark Persisting
 
 -(RXPromise *)persistChangesInContext:(NSManagedObjectContext *)rootContext {
-	return (RXPromise *)RXMonadRecurse([RXJust just:[RXJust just:rootContext]], ^RXPromise *(id<RXMaybe> maybeContext) {
-		
+	return (RXPromise *)RXMonadRecurseWhile([RXJust just:[RXJust just:rootContext]], ^bool(id<RXMaybe> maybeContext){
+		return [maybeContext bind:^id<RXMaybe>(id object) {
+			return object;
+		}];
+	}, ^RXPromise *(id<RXMaybe> maybeContext) {
 		RXPromise *promise = [RXPromise new];
 		[maybeContext bind:^id(NSManagedObjectContext *context) {
 			[context performBlock:^{
