@@ -7,8 +7,6 @@
 
 @interface RXFetchedCollection () <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, readonly) NSFetchRequest *fetchRequest;
-@property (nonatomic) NSManagedObjectContext *context;
 @property (nonatomic, readonly) NSFetchedResultsController *fetchedResultsController;
 
 @property (nonatomic, readonly) RXMemo *refetch;
@@ -19,22 +17,11 @@
 
 @implementation RXFetchedCollection
 
-@synthesize fetchRequest = _fetchRequest;
-
--(NSFetchRequest *)fetchRequest {
-	return RXMemoize(_fetchRequest, ^id{
-		NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:self.entityName];
-		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:self.sortKey ascending:YES]];
-		return request;
-	}());
-}
-
-
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 -(NSFetchedResultsController *)fetchedResultsController {
 	return RXMemoize(_fetchedResultsController, ^id{
-		NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:self.fetchRequest managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
+		NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:self.request managedObjectContext:self.context sectionNameKeyPath:nil cacheName:nil];
 		controller.delegate = self;
 		return controller;
 	}());

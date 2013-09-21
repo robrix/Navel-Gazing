@@ -90,18 +90,12 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="collection" destination="IUx-MA-np6" id="XYl-Zt-7fi"/>
+                        <outlet property="dataSource" destination="ug2-FX-qdC" id="vDc-xR-4cc"/>
                         <outlet property="viewModel" destination="GxP-zY-lti" id="Ifw-A9-Gfb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTJ-DY-5Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="GxP-zY-lti" customClass="NAVELViewPerson"/>
-                <customObject id="IUx-MA-np6" userLabel="Users" customClass="RXFetchedCollection">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="entityName" value="Person"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="sortKey" value="insertionDate"/>
-                    </userDefinedRuntimeAttributes>
-                </customObject>
                 <customObject id="ug2-FX-qdC" userLabel="Users Controller" customClass="NAVELUsersController">
                     <connections>
                         <outlet property="viewController" destination="UAi-MU-NEq" id="xDE-P1-ULM"/>

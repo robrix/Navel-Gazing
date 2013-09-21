@@ -2,5 +2,7 @@
 
 @import Foundation;
 
+#import "RXCollection.h"
+
 @interface NAVELUsersController : NSObject
 @end

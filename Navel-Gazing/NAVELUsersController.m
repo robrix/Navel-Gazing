@@ -2,24 +2,23 @@
 
 #import "NAVELUsersController.h"
 #import "NAVELModelController.h"
+#import "RXCollectionViewController.h"
 
 #import "RXMemoization.h"
 #import "RXResponse.h"
 
-@interface NAVELUsersController () <UIAlertViewDelegate, UITextFieldDelegate>
+@interface NAVELUsersController () <UIAlertViewDelegate, UITextFieldDelegate, RXCollectionViewControllerDataSource>
 
 @property (nonatomic) UIAlertView *userPrompt;
 @property (nonatomic) NAVELModelController *modelController;
 
-@property (nonatomic) IBOutlet UIViewController *viewController;
+@property (nonatomic) IBOutlet RXCollectionViewController *viewController;
 
 @end
 
 @implementation NAVELUsersController
 
 -(IBAction)createUser:(id)sender {
-	RXMemoize(self.modelController, RXResponseToMessage(@selector(respondWithModelController:), self.viewController));
-	
 	self.userPrompt = [[UIAlertView alloc] initWithTitle:@"Add User" message:@"Enter the name of the user to add." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add", nil];
 	self.userPrompt.alertViewStyle = UIAlertViewStylePlainTextInput;
 	[self.userPrompt textFieldAtIndex:0].delegate = self;
@@ -33,6 +32,23 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
 	[self.userPrompt dismissWithClickedButtonIndex:[self.userPrompt firstOtherButtonIndex] animated:YES];
+}
+
+
+#pragma mark RXCollectionViewControllerDataSource
+
+-(id<RXCollection>)collectionForCollectionViewController:(RXCollectionViewController *)collectionViewController {
+	RXMemoize(self.modelController, RXResponseToMessage(@selector(respondWithModelController:), self.viewController));
+	
+	RXFetchedCollection *collection = nil;
+	if (self.modelController) {
+		collection = [[RXFetchedCollection alloc] init];
+		collection.request = [[NSFetchRequest alloc] init];
+		collection.request.entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:self.modelController.userInterfaceContext];
+		collection.request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"insertionDate" ascending:YES]];
+		collection.context = self.modelController.userInterfaceContext;
+	}
+	return collection;
 }
 
 @end

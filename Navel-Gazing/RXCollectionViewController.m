@@ -2,18 +2,55 @@
 
 #import "RXCollectionViewController.h"
 #import "RXMemoization.h"
+#import "RXMemo.h"
 #import "RXResponse.h"
 #import "RXModelView.h"
+#import "RXObservationTarget.h"
+#import "RXCollectionChange.h"
 
 @interface RXCollectionViewController () <UITableViewDataSource>
+
+@property (nonatomic) RXMemo *collectionMemo;
+@property (nonatomic) RXMemo *collectionChangesMemo;
+
 @end
 
 @implementation RXCollectionViewController
 
-#pragma mark View lifecycle
-
 -(void)viewDidLoad {
+	self.collectionMemo = [RXMemo memoWithTarget:self block:^id(RXCollectionViewController *self) {
+		return [self.dataSource collectionForCollectionViewController:self];
+	}];
 	
+	self.collectionChangesMemo = [RXMemo memoWithTarget:self block:^id(RXCollectionViewController *self) {
+		NSSet *changes = self.collection.changes;
+		if (changes) {
+			[self.tableView beginUpdates];
+			
+			for (id<RXCollectionChange> change in changes) {
+				[change applyToTableView:self.tableView];
+			}
+			
+			[self.tableView endUpdates];
+		}
+		return changes;
+	}];
+	self.collectionChangesMemo.dependencies = @[[RXObservationTarget targetWithObject:self.collectionMemo keyPath:@"value.changes"]];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	[self.tableView reloadData];
+}
+
+
+-(NSSet *)collectionChanges {
+	return self.collectionChangesMemo.value;
+}
+
+-(id<RXCollection>)collection {
+	return self.collectionMemo.value;
 }
 
 

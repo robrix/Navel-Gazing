@@ -16,8 +16,8 @@
 
 @interface RXFetchedCollection : NSObject <RXCollection>
 
-@property (nonatomic, copy) NSString *entityName;
-@property (nonatomic, copy) NSString *sortKey;
+@property (nonatomic) NSFetchRequest *request;
+@property (nonatomic) NSManagedObjectContext *context;
 
 @property (nonatomic, readonly) NSError *fetchError;
 
