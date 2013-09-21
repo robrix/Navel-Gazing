@@ -23,6 +23,12 @@
 	return self;
 }
 
+
+-(NSManagedObjectContext *)userInterfaceContext {
+	return self.persistenceController.userInterfaceContext;
+}
+
+
 -(RXPromise *)promiseForUserWithName:(NSString *)userName {
 	RXPromise *details = [[[self.resourceController subresourceWithPath:@"users"] subresourceWithPath:userName] promiseForContents];
 	

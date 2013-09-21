@@ -9,6 +9,8 @@
 
 -(instancetype)initWithResourceController:(RXResourceController *)resourceController persistenceController:(RXPersistenceController *)persistenceController;
 
+@property (nonatomic, readonly) NSManagedObjectContext *userInterfaceContext;
+
 -(RXPromise *)promiseForUserWithName:(NSString *)userName;
 
 @end
