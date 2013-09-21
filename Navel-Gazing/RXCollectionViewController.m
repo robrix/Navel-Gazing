@@ -35,6 +35,7 @@
 		}
 		return changes;
 	}];
+	self.collectionChangesMemo.greedy = YES;
 	self.collectionChangesMemo.dependencies = @[[RXObservationTarget targetWithObject:self.collectionMemo keyPath:@"value.changes"]];
 }
 
