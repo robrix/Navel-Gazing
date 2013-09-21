@@ -3,6 +3,8 @@
 #import "NAVELViewPerson.h"
 #import "NAVELPerson.h"
 
+#import "RXMaybe.h"
+
 @interface NAVELViewPerson ()
 
 @property (nonatomic, readonly) NAVELPerson *person;
@@ -24,8 +26,11 @@
 
 -(RXPromise *)promisedAvatar {
 	return self.person.avatarURL?
-		[[RXPromise promiseForContentsOfURL:self.person.avatarURL] then:^(RXPromise *resolver, NSData *data) {
-			[resolver fulfillWithObject:[[UIImage alloc] initWithData:data]];
+		[[RXPromise promiseForContentsOfURL:self.person.avatarURL] then:^(RXPromise *avatar, id<RXMaybe> maybeData) {
+			[maybeData then:^id(NSData *data) {
+				[avatar fulfillWithObject:[[UIImage alloc] initWithData:data]];
+				return nil;
+			}];
 		}]
 	:	nil;
 }
