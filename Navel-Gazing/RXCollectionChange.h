@@ -1,12 +1,15 @@
 //  Copyright (c) 2013 Rob Rix. All rights reserved.
 
 @import CoreData;
+@import UIKit;
 
 @protocol RXCollectionChange <NSObject>
 
 -(instancetype)initWithIndexPath:(NSIndexPath *)indexPath newIndexPath:(NSIndexPath *)newIndexPath;
 
 @property (nonatomic, readonly) NSIndexPath *indexPath;
+
+-(void)applyToTableView:(UITableView *)tableView;
 
 @end
 

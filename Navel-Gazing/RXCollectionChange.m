@@ -25,6 +25,11 @@ id<RXCollectionChange> RXCollectionChangeWithType(NSFetchedResultsChangeType typ
 	return self;
 }
 
+
+-(void)applyToTableView:(UITableView *)tableView {
+	[tableView insertRowsAtIndexPaths:@[self.indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 @end
 
 
@@ -37,6 +42,11 @@ id<RXCollectionChange> RXCollectionChangeWithType(NSFetchedResultsChangeType typ
 		_indexPath = indexPath;
 	}
 	return self;
+}
+
+
+-(void)applyToTableView:(UITableView *)tableView {
+	[tableView reloadRowsAtIndexPaths:@[self.indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
@@ -54,6 +64,11 @@ id<RXCollectionChange> RXCollectionChangeWithType(NSFetchedResultsChangeType typ
 	return self;
 }
 
+
+-(void)applyToTableView:(UITableView *)tableView {
+	[tableView moveRowAtIndexPath:self.indexPath toIndexPath:self.destinationIndexPath];
+}
+
 @end
 
 
@@ -66,6 +81,10 @@ id<RXCollectionChange> RXCollectionChangeWithType(NSFetchedResultsChangeType typ
 		_indexPath = indexPath;
 	}
 	return self;
+}
+
+-(void)applyToTableView:(UITableView *)tableView {
+	[tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
