@@ -33,7 +33,7 @@ id<RXMonad> RXMonadRecurse(id<RXMonad> m, RXMonadUnitFunction f) {
 id<RXMonad> RXMonadRecurseWhile(id<RXMonad> m, bool(^predicate)(id x), RXMonadUnitFunction f) {
 	return [m bind:^id<RXMonad>(id x) {
 		return predicate(x)?
-			RXMonadRecurse(f(x), f)
+			RXMonadRecurseWhile(f(x), predicate, f)
 		:	nil;
 	}];
 }
