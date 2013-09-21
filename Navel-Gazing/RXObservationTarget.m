@@ -31,7 +31,25 @@
 }
 
 -(void)removeObserver:(id)observer context:(void *)context {
-	[self.object removeObserver:observer context:context];
+	[self.object removeObserver:observer forKeyPath:self.keyPath context:context];
+}
+
+
+#pragma mark NSObject
+
+-(bool)isEqualToObservationTarget:(RXObservationTarget *)other {
+	return
+		[other isKindOfClass:[RXObservationTarget class]]
+	&&	(other.object == self.object)
+	&&	[other.keyPath isEqualToString:self.keyPath];
+}
+
+-(BOOL)isEqual:(id)object {
+	return [self isEqualToObservationTarget:object];
+}
+
+-(NSUInteger)hash {
+	return self.keyPath.hash;
 }
 
 @end
