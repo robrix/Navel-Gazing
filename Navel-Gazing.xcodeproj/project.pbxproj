@@ -118,6 +118,7 @@
 		D489B86617EAA3910082BA63 /* RXViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXViewModel.h; sourceTree = "<group>"; };
 		D489B86917EAA4220082BA63 /* NAVELViewPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELViewPerson.h; sourceTree = "<group>"; };
 		D489B86A17EAA4220082BA63 /* NAVELViewPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELViewPerson.m; sourceTree = "<group>"; };
+		D4967BC717EE315600C6E983 /* RXMemoDependency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMemoDependency.h; sourceTree = "<group>"; };
 		D4A6D37F17EC5A4C00B8F92E /* NAVELModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELModelController.h; sourceTree = "<group>"; };
 		D4A6D38017EC5A4C00B8F92E /* NAVELModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELModelController.m; sourceTree = "<group>"; };
 		D4A6D38217EC9A5400B8F92E /* RXMaybe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMaybe.h; sourceTree = "<group>"; };
@@ -269,6 +270,7 @@
 				D4A6D38917ECA06900B8F92E /* RXMonad.m */,
 				D4A6D38217EC9A5400B8F92E /* RXMaybe.h */,
 				D4A6D38317EC9A5400B8F92E /* RXMaybe.m */,
+				D4967BC717EE315600C6E983 /* RXMemoDependency.h */,
 				D41EF94517ED2B0800D2DAD5 /* RXMemo.h */,
 				D41EF94617ED2B0800D2DAD5 /* RXMemo.m */,
 			);
