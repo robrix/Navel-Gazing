@@ -13,7 +13,7 @@
 
 @property (nonatomic, readonly) NSPersistentStoreCoordinator *coordinator;
 
--(void)performBackgroundOperationWithBlock:(void(^)(NSManagedObjectContext *context))block;
+-(RXPromise *)performBackgroundOperationWithBlock:(RXPromise *(^)(NSManagedObjectContext *context))block;
 
 -(RXPromise *)persistChangesInContext:(NSManagedObjectContext *)context;
 

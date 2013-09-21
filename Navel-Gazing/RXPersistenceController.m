@@ -68,11 +68,15 @@
 	return context;
 }
 
--(void)performBackgroundOperationWithBlock:(void(^)(NSManagedObjectContext *context))block {
+-(RXPromise *)performBackgroundOperationWithBlock:(RXPromise *(^)(NSManagedObjectContext *context))block {
+	RXPromise *completion = [RXPromise new];
 	NSManagedObjectContext *context = [self makeTemporaryContext];
 	[context performBlock:^{
-		block(context);
+		[completion fulfillWithObject:[block(context) bind:^RXPromise *(id x) {
+			return [RXPromise promiseWithObject:x];
+		}]];
 	}];
+	return completion;
 }
 
 
@@ -85,16 +89,18 @@
 		}];
 	}, ^RXPromise *(id<RXMaybe> maybeContext) {
 		RXPromise *promise = [RXPromise new];
-		[maybeContext bind:^id(NSManagedObjectContext *context) {
+		return [maybeContext then:^id(NSManagedObjectContext *context) {
 			[context performBlock:^{
 				NSError *error;
 				[promise fulfillWithObject:[context save:&error]?
 					[RXJust just:context.parentContext]
 				:	[RXNothing nothing:error]];
 			}];
-			return nil;
+			return promise;
+		} else:^id(NSError *error) {
+			[promise fulfillWithObject:maybeContext];
+			return promise;
 		}];
-		return promise;
 	});
 }
 
