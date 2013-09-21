@@ -38,7 +38,16 @@
 	
 	return [JSON then:^(RXPromise *resolver, NSDictionary *details) {
 		[self.persistenceController performBackgroundOperationWithBlock:^(NSManagedObjectContext *context) {
-			NAVELPerson *person = [NSEntityDescription insertNewObjectForEntityForName:@"Person" inManagedObjectContext:context];
+			NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:context];
+			
+			NSFetchRequest *extantRequest = [NSFetchRequest new];
+			extantRequest.entity = entity;
+			extantRequest.predicate = [NSPredicate predicateWithFormat:@"userName = %@", userName];
+			extantRequest.fetchLimit = 1;
+			
+			NAVELPerson *person =
+				[context executeFetchRequest:extantRequest error:NULL].firstObject
+			?:	[[NAVELPerson alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
 			person.userName = userName;
 			person.name = details[@"name"];
 			person.emailAddress = details[@"email"];
