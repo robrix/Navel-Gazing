@@ -6,36 +6,43 @@
 
 @property (nonatomic) bool needsEvaluation;
 
-@property (nonatomic, readonly) id(^block)();
+@property (nonatomic, readonly) id(^block)(id target);
 
 @end
 
 @implementation RXMemo
 
-+(instancetype)memoWithBlock:(id (^)(void))block {
-	return [[self alloc] initWithBlock:block];
++(instancetype)memoWithTarget:(id)target block:(id(^)(id target))block; {
+	return [[self alloc] initWithTarget:target block:block];
 }
 
--(instancetype)initWithBlock:(id(^)(void))block {
+-(instancetype)initWithTarget:(id)target block:(id(^)(id target))block {
 	if ((self = [super init])) {
+		_target = target;
 		_block = [block copy];
 		_needsEvaluation = YES;
 	}
 	return self;
 }
 
+
 -(void)invalidate {
 	self.needsEvaluation = YES;
+}
+
+
+-(void)evaluate {
+	if (self.needsEvaluation) {
+		_value = self.block(self.target);
+		self.needsEvaluation = NO;
+	}
 }
 
 
 @synthesize value = _value;
 
 -(id)value {
-	if (self.needsEvaluation) {
-		_value = self.block();
-		self.needsEvaluation = NO;
-	}
+	[self evaluate];
 	return _value;
 }
 
