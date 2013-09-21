@@ -10,6 +10,7 @@
 		D41EF93317ECC99900D2DAD5 /* RXResourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF93217ECC99900D2DAD5 /* RXResourceController.m */; };
 		D41EF93517ECCB7300D2DAD5 /* static-api in Resources */ = {isa = PBXBuildFile; fileRef = D41EF93417ECCB7300D2DAD5 /* static-api */; };
 		D41EF93817ECD80400D2DAD5 /* NAVELUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF93717ECD80400D2DAD5 /* NAVELUsersController.m */; };
+		D41EF94717ED2B0800D2DAD5 /* RXMemo.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF94617ED2B0800D2DAD5 /* RXMemo.m */; };
 		D43A696917E92AF6006A1B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696817E92AF6006A1B03 /* Foundation.framework */; };
 		D43A696B17E92AF6006A1B03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696A17E92AF6006A1B03 /* CoreGraphics.framework */; };
 		D43A696D17E92AF6006A1B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696C17E92AF6006A1B03 /* UIKit.framework */; };
@@ -62,6 +63,8 @@
 		D41EF93417ECCB7300D2DAD5 /* static-api */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "static-api"; sourceTree = SOURCE_ROOT; };
 		D41EF93617ECD80400D2DAD5 /* NAVELUsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELUsersController.h; sourceTree = "<group>"; };
 		D41EF93717ECD80400D2DAD5 /* NAVELUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELUsersController.m; sourceTree = "<group>"; };
+		D41EF94517ED2B0800D2DAD5 /* RXMemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMemo.h; sourceTree = "<group>"; };
+		D41EF94617ED2B0800D2DAD5 /* RXMemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMemo.m; sourceTree = "<group>"; };
 		D43A696517E92AF6006A1B03 /* Navel-Gazing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Navel-Gazing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43A696817E92AF6006A1B03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D43A696A17E92AF6006A1B03 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -256,6 +259,8 @@
 				D4A6D38917ECA06900B8F92E /* RXMonad.m */,
 				D4A6D38217EC9A5400B8F92E /* RXMaybe.h */,
 				D4A6D38317EC9A5400B8F92E /* RXMaybe.m */,
+				D41EF94517ED2B0800D2DAD5 /* RXMemo.h */,
+				D41EF94617ED2B0800D2DAD5 /* RXMemo.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				D489B85E17EA93BD0082BA63 /* RXModelCell.m in Sources */,
 				D43A69CA17E94C60006A1B03 /* RXPromisedImageView.m in Sources */,
 				D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */,
+				D41EF94717ED2B0800D2DAD5 /* RXMemo.m in Sources */,
 				D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */,
 				D489B86117EA94190082BA63 /* UIView+RXModelMapping.m in Sources */,
 				D41EF93817ECD80400D2DAD5 /* NAVELUsersController.m in Sources */,
