@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Master Navigation-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
-                <navigationController id="RMx-3f-FxP" sceneMemberID="viewController">
+                <navigationController id="RMx-3f-FxP" userLabel="Master Navigation" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -22,7 +22,7 @@
         <!--Users View Controller-->
         <scene sceneID="1HR-2J-e3a">
             <objects>
-                <tableViewController id="UAi-MU-NEq" userLabel="Users View Controller" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="users" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UAi-MU-NEq" userLabel="Users View Controller" customClass="RXCollectionViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="F42-Kn-BXM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,8 +73,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="IUx-MA-np6" id="hoA-jc-A4s"/>
-                            <outlet property="delegate" destination="IUx-MA-np6" id="Sqb-hZ-IcR"/>
+                            <outlet property="dataSource" destination="UAi-MU-NEq" id="knv-fC-LEb"/>
+                            <outlet property="delegate" destination="UAi-MU-NEq" id="I9w-wQ-CQy"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Users" id="2ca-Xp-z4e">
@@ -86,19 +86,21 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="tJZ-C9-cyL"/>
                     </navigationItem>
                     <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="collection" destination="IUx-MA-np6" id="XYl-Zt-7fi"/>
+                        <outlet property="viewModel" destination="GxP-zY-lti" id="Ifw-A9-Gfb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTJ-DY-5Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="GxP-zY-lti" customClass="NAVELViewPerson"/>
-                <customObject id="IUx-MA-np6" userLabel="Users Collection" customClass="RXCollectionController">
+                <customObject id="IUx-MA-np6" userLabel="Users" customClass="RXFetchedCollection">
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="user"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="entityName" value="Person"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="sortKey" value="insertionDate"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="tableView" destination="F42-Kn-BXM" id="OO1-WY-DuM"/>
-                        <outlet property="viewModel" destination="GxP-zY-lti" id="QsX-Gn-JzA"/>
-                    </connections>
                 </customObject>
                 <customObject id="ug2-FX-qdC" userLabel="Users Controller" customClass="NAVELUsersController">
                     <connections>
@@ -111,7 +113,7 @@
         <!--Repositories-->
         <scene sceneID="fc7-Gz-coi">
             <objects>
-                <tableViewController id="xTL-Yu-qqy" userLabel="Repositories" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="repositories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xTL-Yu-qqy" userLabel="Repositories" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0nd-kE-vRm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -155,11 +157,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Repositories" id="Lf2-nN-MiX"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xvt-ra-5Or" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="ViG-2o-A2q" userLabel="Repositories Model" customClass="RXCollectionController">
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="wp1-uJ-HKN">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="defaultReuseIdentifier" value="repository"/>
+                    </userDefinedRuntimeAttributes>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xvt-ra-5Or" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="ViG-2o-A2q" userLabel="Repositories Model" customClass="RXFetchedCollection">
+                    <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="entityName" value="Repository"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="sortKey" value="name"/>
                     </userDefinedRuntimeAttributes>
@@ -183,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="-687" y="-630"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Detail Navigation-->
         <scene sceneID="r7l-gg-dq7">
             <objects>
-                <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
+                <navigationController id="vC3-pB-5Vb" userLabel="Detail Navigation" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -198,10 +205,10 @@
             </objects>
             <point key="canvasLocation" x="65" y="248"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail-->
         <scene sceneID="7jA-l9-i2b">
             <objects>
-                <viewController id="oBu-dm-pkk" sceneMemberID="viewController">
+                <viewController id="oBu-dm-pkk" userLabel="Detail" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qn8-io-2GC"/>
                         <viewControllerLayoutGuide type="bottom" id="EUr-ox-PS8"/>
