@@ -43,6 +43,10 @@
 	return self.fetchedResultsController.fetchedObjects;
 }
 
+-(id)memberAtIndexPath:(NSIndexPath *)indexPath {
+	return indexPath? [self.fetchedResultsController objectAtIndexPath:indexPath] : nil;
+}
+
 
 -(NSError *)fetchError {
 	return self.refetch.value;

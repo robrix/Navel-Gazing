@@ -6,6 +6,8 @@
 
 @property (nonatomic, readonly) NSArray *members;
 
+-(id)memberAtIndexPath:(NSIndexPath *)indexPath;
+
 /**
  KVO-compliant.
  */
