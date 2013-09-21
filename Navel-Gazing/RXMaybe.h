@@ -7,7 +7,7 @@
 @protocol RXMaybe;
 
 typedef id(^RXMaybeThenBlock)(id object);
-typedef id(^RXMaybeElseBlock)(id object);
+typedef id(^RXMaybeElseBlock)(NSError *error);
 
 @protocol RXMaybe <RXMonad>
 
