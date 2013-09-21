@@ -20,7 +20,7 @@ id<RXCollectionChange> RXCollectionChangeWithType(NSFetchedResultsChangeType typ
 
 -(instancetype)initWithIndexPath:(NSIndexPath *)indexPath newIndexPath:(NSIndexPath *)newIndexPath {
 	if ((self = [super init])) {
-		_indexPath = indexPath;
+		_indexPath = newIndexPath;
 	}
 	return self;
 }
