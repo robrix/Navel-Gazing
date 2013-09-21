@@ -54,10 +54,17 @@
 }
 
 
+#pragma mark Segues
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	[self.delegate collectionViewController:self prepareForSegue:segue withModelObject:[self.collection memberAtIndexPath:[self.tableView indexPathForCell:sender]]];
+}
+
+
 #pragma mark Collection elements
 
 -(id)objectAtIndexPath:(NSIndexPath *)indexPath {
-	return self.collection.members[indexPath.row];
+	return [self.collection memberAtIndexPath:indexPath];
 }
 
 

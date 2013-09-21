@@ -68,7 +68,7 @@
                                 <connections>
                                     <outlet property="avatarView" destination="auB-rU-3k9" id="bh4-rv-edW"/>
                                     <outlet property="nameLabel" destination="9hZ-w6-5qw" id="sTm-nf-Ac6"/>
-                                    <segue destination="xTL-Yu-qqy" kind="push" id="63p-kN-0as"/>
+                                    <segue destination="xTL-Yu-qqy" kind="push" identifier="userRepositories" id="63p-kN-0as"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,6 +91,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="dataSource" destination="ug2-FX-qdC" id="vDc-xR-4cc"/>
+                        <outlet property="delegate" destination="ug2-FX-qdC" id="M91-XS-KNe"/>
                         <outlet property="viewModel" destination="GxP-zY-lti" id="Ifw-A9-Gfb"/>
                     </connections>
                 </tableViewController>
@@ -107,7 +108,7 @@
         <!--Repositories-->
         <scene sceneID="fc7-Gz-coi">
             <objects>
-                <tableViewController storyboardIdentifier="repositories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xTL-Yu-qqy" userLabel="Repositories" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="repositories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xTL-Yu-qqy" userLabel="Repositories" customClass="RXCollectionViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0nd-kE-vRm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,12 +160,6 @@
                     </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvt-ra-5Or" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="ViG-2o-A2q" userLabel="Repositories Model" customClass="RXFetchedCollection">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="entityName" value="Repository"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="sortKey" value="name"/>
-                    </userDefinedRuntimeAttributes>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="1313" y="-630"/>
         </scene>

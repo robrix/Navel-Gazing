@@ -2,12 +2,13 @@
 
 #import "NAVELUsersController.h"
 #import "NAVELModelController.h"
+#import "NAVELRepositoriesController.h"
 #import "RXCollectionViewController.h"
 
 #import "RXMemoization.h"
 #import "RXResponse.h"
 
-@interface NAVELUsersController () <UIAlertViewDelegate, UITextFieldDelegate, RXCollectionViewControllerDataSource>
+@interface NAVELUsersController () <UIAlertViewDelegate, UITextFieldDelegate, RXCollectionViewControllerDataSource, RXCollectionViewControllerDelegate>
 
 @property (nonatomic) UIAlertView *userPrompt;
 @property (nonatomic) NAVELModelController *modelController;
@@ -49,6 +50,22 @@
 		collection.context = self.modelController.userInterfaceContext;
 	}
 	return collection;
+}
+
+
+#pragma mark RXCollectionViewControllerDelegate
+
+-(void)collectionViewController:(RXCollectionViewController *)controller prepareForSegue:(UIStoryboardSegue *)segue withModelObject:(id)modelObject {
+	if ([segue.identifier isEqual:@"userRepositories"]) {
+		RXCollectionViewController *repositoriesViewController = segue.destinationViewController;
+		
+		NAVELRepositoriesController *repositoriesController = [NAVELRepositoriesController new];
+		repositoriesController.modelController = self.modelController;
+		repositoriesController.user = modelObject;
+		
+		repositoriesViewController.delegate = repositoriesController;
+		repositoriesViewController.dataSource = repositoriesController;
+	}
 }
 
 @end
