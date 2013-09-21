@@ -29,12 +29,16 @@
 
 #pragma mark RXMaybe
 
--(id<RXMaybe>)then:(RXMaybeBlock)block {
-	return block(self.object);
+-(id)then:(RXMaybeThenBlock)block {
+	return [self then:block else:nil];
 }
 
--(id<RXMaybe>)else:(RXMaybeBlock)block {
+-(id)else:(RXMaybeElseBlock)block {
 	return self;
+}
+
+-(id)then:(RXMaybeThenBlock)thenBlock else:(RXMaybeElseBlock)elseBlock {
+	return thenBlock? thenBlock(self.object) : self;
 }
 
 @end
@@ -69,19 +73,23 @@
 	return [self nothing:error];
 }
 
--(id<RXMaybe>)bind:(RXMaybeBlock)block {
+-(id<RXMonad>)bind:(RXMonadUnitFunction)block {
 	return self;
 }
 
 
 #pragma mark RXMaybe
 
--(id<RXMaybe>)then:(RXMaybeBlock)block {
+-(id)then:(RXMaybeThenBlock)thenBlock else:(RXMaybeElseBlock)elseBlock {
+	return elseBlock? elseBlock(self.error) : self;
+}
+
+-(id)then:(RXMaybeThenBlock)block {
 	return self;
 }
 
--(id<RXMaybe>)else:(RXMaybeBlock)block {
-	return block(self.error);
+-(id)else:(RXMaybeElseBlock)block {
+	return [self then:nil else:block];
 }
 
 @end
