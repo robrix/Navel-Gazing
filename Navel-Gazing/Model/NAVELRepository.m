@@ -12,6 +12,7 @@
 
 @implementation NAVELRepository
 
+@dynamic name;
 @dynamic urlString;
 @dynamic branches;
 @dynamic owner;
@@ -22,6 +23,14 @@
 
 -(void)setURL:(NSURL *)URL {
 	self.urlString = [URL absoluteString];
+}
+
+-(NSString *)URLString {
+	return self.urlString;
+}
+
+-(void)setURLString:(NSString *)URLString {
+	self.urlString = URLString;
 }
 
 @end

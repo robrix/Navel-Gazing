@@ -2,27 +2,27 @@
 
 @import Foundation;
 
-@class RXPromiseResolver;
-typedef void(^RXPromiseThenBlock)(RXPromiseResolver *resolver, id object);
+#import "RXMonad.h"
 
-@protocol RXPromise <NSObject>
+@class RXPromise;
+typedef void(^RXPromiseThenBlock)(RXPromise *promise, id object);
+typedef RXPromise *(^RXPromiseUnitFunction)(id x);
+
+@interface RXPromise : NSObject <RXMonad>
+
++(instancetype)promiseForContentsOfURLRequest:(NSURLRequest *)request;
++(instancetype)promiseForContentsOfURL:(NSURL *)URL;
+
++(instancetype)promiseWithObject:(id)object;
 
 -(instancetype)then:(RXPromiseThenBlock)block;
+-(RXPromise *)bind:(RXPromiseUnitFunction)block;
 
 /**
  Cancels the observation of this promise. Its block (if any) will not be called.
  */
 -(void)cancel;
 
-@end
-
-@interface RXPromiseResolver : NSObject
-
 -(void)fulfillWithObject:(id)object;
 
-@property (nonatomic, readonly) id<RXPromise> promise;
-
 @end
-
-
-id<RXPromise> RXPromiseForContentsOfURL(NSURL *URL);

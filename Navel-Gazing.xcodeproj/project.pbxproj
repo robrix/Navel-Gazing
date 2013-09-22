@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D41EF93317ECC99900D2DAD5 /* RXResourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF93217ECC99900D2DAD5 /* RXResourceController.m */; };
+		D41EF93517ECCB7300D2DAD5 /* static-api in Resources */ = {isa = PBXBuildFile; fileRef = D41EF93417ECCB7300D2DAD5 /* static-api */; };
+		D41EF93817ECD80400D2DAD5 /* NAVELUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF93717ECD80400D2DAD5 /* NAVELUsersController.m */; };
+		D41EF93B17ED20BA00D2DAD5 /* RXCollectionChange.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF93A17ED20BA00D2DAD5 /* RXCollectionChange.m */; };
+		D41EF94117ED289800D2DAD5 /* RXCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF94017ED289800D2DAD5 /* RXCollection.m */; };
+		D41EF94717ED2B0800D2DAD5 /* RXMemo.m in Sources */ = {isa = PBXBuildFile; fileRef = D41EF94617ED2B0800D2DAD5 /* RXMemo.m */; };
 		D43A696917E92AF6006A1B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696817E92AF6006A1B03 /* Foundation.framework */; };
 		D43A696B17E92AF6006A1B03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696A17E92AF6006A1B03 /* CoreGraphics.framework */; };
 		D43A696D17E92AF6006A1B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D43A696C17E92AF6006A1B03 /* UIKit.framework */; };
@@ -30,13 +36,19 @@
 		D43A69B717E942B6006A1B03 /* NAVELPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B617E942B6006A1B03 /* NAVELPerson.m */; };
 		D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69B917E942B6006A1B03 /* NAVELBranch.m */; };
 		D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BC17E942B6006A1B03 /* NAVELRepository.m */; };
-		D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69BF17E94457006A1B03 /* RXCollectionController.m */; };
 		D43A69CA17E94C60006A1B03 /* RXPromisedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */; };
 		D489B84E17EA87660082BA63 /* RXResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B84D17EA87660082BA63 /* RXResponse.m */; };
 		D489B85E17EA93BD0082BA63 /* RXModelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B85D17EA93BD0082BA63 /* RXModelCell.m */; };
 		D489B86117EA94190082BA63 /* UIView+RXModelMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86017EA94190082BA63 /* UIView+RXModelMapping.m */; };
 		D489B86517EA972A0082BA63 /* NAVELPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86417EA972A0082BA63 /* NAVELPersonCell.m */; };
 		D489B86B17EAA4220082BA63 /* NAVELViewPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D489B86A17EAA4220082BA63 /* NAVELViewPerson.m */; };
+		D4967BC517EE30EC00C6E983 /* RXObservationTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = D4967BC417EE30EC00C6E983 /* RXObservationTarget.m */; };
+		D4967BCA17EE3B7000C6E983 /* NAVELRepositoriesController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4967BC917EE3B7000C6E983 /* NAVELRepositoriesController.m */; };
+		D4A6D38117EC5A4C00B8F92E /* NAVELModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A6D38017EC5A4C00B8F92E /* NAVELModelController.m */; };
+		D4A6D38417EC9A5400B8F92E /* RXMaybe.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A6D38317EC9A5400B8F92E /* RXMaybe.m */; };
+		D4A6D38A17ECA06900B8F92E /* RXMonad.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A6D38917ECA06900B8F92E /* RXMonad.m */; };
+		D4C6C11717EAAC960000E04E /* NAVELRepositoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */; };
+		D4F2D4F317ED361C00F4A1A5 /* RXCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2D4F217ED361C00F4A1A5 /* RXCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +62,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D41EF93117ECC99900D2DAD5 /* RXResourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXResourceController.h; sourceTree = "<group>"; };
+		D41EF93217ECC99900D2DAD5 /* RXResourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXResourceController.m; sourceTree = "<group>"; };
+		D41EF93417ECCB7300D2DAD5 /* static-api */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "static-api"; sourceTree = SOURCE_ROOT; };
+		D41EF93617ECD80400D2DAD5 /* NAVELUsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELUsersController.h; sourceTree = "<group>"; };
+		D41EF93717ECD80400D2DAD5 /* NAVELUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELUsersController.m; sourceTree = "<group>"; };
+		D41EF93917ED20BA00D2DAD5 /* RXCollectionChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCollectionChange.h; sourceTree = "<group>"; };
+		D41EF93A17ED20BA00D2DAD5 /* RXCollectionChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCollectionChange.m; sourceTree = "<group>"; };
+		D41EF93F17ED289800D2DAD5 /* RXCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCollection.h; sourceTree = "<group>"; };
+		D41EF94017ED289800D2DAD5 /* RXCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCollection.m; sourceTree = "<group>"; };
+		D41EF94517ED2B0800D2DAD5 /* RXMemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMemo.h; sourceTree = "<group>"; };
+		D41EF94617ED2B0800D2DAD5 /* RXMemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMemo.m; sourceTree = "<group>"; };
 		D43A696517E92AF6006A1B03 /* Navel-Gazing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Navel-Gazing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43A696817E92AF6006A1B03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D43A696A17E92AF6006A1B03 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,8 +106,6 @@
 		D43A69B917E942B6006A1B03 /* NAVELBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELBranch.m; sourceTree = "<group>"; };
 		D43A69BB17E942B6006A1B03 /* NAVELRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELRepository.h; sourceTree = "<group>"; };
 		D43A69BC17E942B6006A1B03 /* NAVELRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepository.m; sourceTree = "<group>"; };
-		D43A69BE17E94457006A1B03 /* RXCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCollectionController.h; sourceTree = "<group>"; };
-		D43A69BF17E94457006A1B03 /* RXCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCollectionController.m; sourceTree = "<group>"; };
 		D43A69C817E94C60006A1B03 /* RXPromisedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXPromisedImageView.h; sourceTree = "<group>"; };
 		D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXPromisedImageView.m; sourceTree = "<group>"; };
 		D489B84C17EA87660082BA63 /* RXResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXResponse.h; sourceTree = "<group>"; };
@@ -99,6 +120,21 @@
 		D489B86617EAA3910082BA63 /* RXViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXViewModel.h; sourceTree = "<group>"; };
 		D489B86917EAA4220082BA63 /* NAVELViewPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELViewPerson.h; sourceTree = "<group>"; };
 		D489B86A17EAA4220082BA63 /* NAVELViewPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELViewPerson.m; sourceTree = "<group>"; };
+		D4967BC317EE30EC00C6E983 /* RXObservationTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXObservationTarget.h; sourceTree = "<group>"; };
+		D4967BC417EE30EC00C6E983 /* RXObservationTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXObservationTarget.m; sourceTree = "<group>"; };
+		D4967BC717EE315600C6E983 /* RXMemoDependency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMemoDependency.h; sourceTree = "<group>"; };
+		D4967BC817EE3B7000C6E983 /* NAVELRepositoriesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELRepositoriesController.h; sourceTree = "<group>"; };
+		D4967BC917EE3B7000C6E983 /* NAVELRepositoriesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepositoriesController.m; sourceTree = "<group>"; };
+		D4A6D37F17EC5A4C00B8F92E /* NAVELModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELModelController.h; sourceTree = "<group>"; };
+		D4A6D38017EC5A4C00B8F92E /* NAVELModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELModelController.m; sourceTree = "<group>"; };
+		D4A6D38217EC9A5400B8F92E /* RXMaybe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMaybe.h; sourceTree = "<group>"; };
+		D4A6D38317EC9A5400B8F92E /* RXMaybe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMaybe.m; sourceTree = "<group>"; };
+		D4A6D38517EC9A6B00B8F92E /* RXMonad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMonad.h; sourceTree = "<group>"; };
+		D4A6D38917ECA06900B8F92E /* RXMonad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMonad.m; sourceTree = "<group>"; };
+		D4C6C11517EAAC960000E04E /* NAVELRepositoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVELRepositoryCell.h; sourceTree = "<group>"; };
+		D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVELRepositoryCell.m; sourceTree = "<group>"; };
+		D4F2D4F117ED361C00F4A1A5 /* RXCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCollectionViewController.h; sourceTree = "<group>"; };
+		D4F2D4F217ED361C00F4A1A5 /* RXCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +212,7 @@
 		D43A697117E92AF6006A1B03 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D41EF93417ECCB7300D2DAD5 /* static-api */,
 				D43A697217E92AF6006A1B03 /* Navel-Gazing-Info.plist */,
 				D43A697317E92AF6006A1B03 /* InfoPlist.strings */,
 				D43A697617E92AF6006A1B03 /* main.m */,
@@ -207,13 +244,25 @@
 			children = (
 				D43A697917E92AF6006A1B03 /* NAVELAppDelegate.h */,
 				D43A697A17E92AF6006A1B03 /* NAVELAppDelegate.m */,
+				D4A6D37F17EC5A4C00B8F92E /* NAVELModelController.h */,
+				D4A6D38017EC5A4C00B8F92E /* NAVELModelController.m */,
+				D41EF93617ECD80400D2DAD5 /* NAVELUsersController.h */,
+				D41EF93717ECD80400D2DAD5 /* NAVELUsersController.m */,
+				D4967BC817EE3B7000C6E983 /* NAVELRepositoriesController.h */,
+				D4967BC917EE3B7000C6E983 /* NAVELRepositoriesController.m */,
 				D43A69A717E935C5006A1B03 /* RXPersistenceController.h */,
 				D43A69A817E935C5006A1B03 /* RXPersistenceController.m */,
 				D43A69AE17E93786006A1B03 /* RXPromise.h */,
 				D43A69AF17E93786006A1B03 /* RXPromise.m */,
-				D43A69BE17E94457006A1B03 /* RXCollectionController.h */,
-				D43A69BF17E94457006A1B03 /* RXCollectionController.m */,
+				D41EF93917ED20BA00D2DAD5 /* RXCollectionChange.h */,
+				D41EF93A17ED20BA00D2DAD5 /* RXCollectionChange.m */,
+				D4F2D4F117ED361C00F4A1A5 /* RXCollectionViewController.h */,
+				D4F2D4F217ED361C00F4A1A5 /* RXCollectionViewController.m */,
+				D41EF93F17ED289800D2DAD5 /* RXCollection.h */,
+				D41EF94017ED289800D2DAD5 /* RXCollection.m */,
 				D489B86617EAA3910082BA63 /* RXViewModel.h */,
+				D41EF93117ECC99900D2DAD5 /* RXResourceController.h */,
+				D41EF93217ECC99900D2DAD5 /* RXResourceController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -225,6 +274,15 @@
 				D43A69AC17E9363A006A1B03 /* RXMemoization.m */,
 				D489B84C17EA87660082BA63 /* RXResponse.h */,
 				D489B84D17EA87660082BA63 /* RXResponse.m */,
+				D4A6D38517EC9A6B00B8F92E /* RXMonad.h */,
+				D4A6D38917ECA06900B8F92E /* RXMonad.m */,
+				D4A6D38217EC9A5400B8F92E /* RXMaybe.h */,
+				D4A6D38317EC9A5400B8F92E /* RXMaybe.m */,
+				D4967BC717EE315600C6E983 /* RXMemoDependency.h */,
+				D41EF94517ED2B0800D2DAD5 /* RXMemo.h */,
+				D41EF94617ED2B0800D2DAD5 /* RXMemo.m */,
+				D4967BC317EE30EC00C6E983 /* RXObservationTarget.h */,
+				D4967BC417EE30EC00C6E983 /* RXObservationTarget.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -249,13 +307,15 @@
 		D43A69CB17E94C66006A1B03 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D489B86317EA972A0082BA63 /* NAVELPersonCell.h */,
+				D489B86417EA972A0082BA63 /* NAVELPersonCell.m */,
+				D4C6C11517EAAC960000E04E /* NAVELRepositoryCell.h */,
+				D4C6C11617EAAC960000E04E /* NAVELRepositoryCell.m */,
 				D43A69C817E94C60006A1B03 /* RXPromisedImageView.h */,
 				D43A69C917E94C60006A1B03 /* RXPromisedImageView.m */,
 				D489B86217EA94B60082BA63 /* RXModelView.h */,
 				D489B85C17EA93BD0082BA63 /* RXModelCell.h */,
 				D489B85D17EA93BD0082BA63 /* RXModelCell.m */,
-				D489B86317EA972A0082BA63 /* NAVELPersonCell.h */,
-				D489B86417EA972A0082BA63 /* NAVELPersonCell.m */,
 				D489B85F17EA94190082BA63 /* UIView+RXModelMapping.h */,
 				D489B86017EA94190082BA63 /* UIView+RXModelMapping.m */,
 			);
@@ -340,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D43A698917E92AF6006A1B03 /* Images.xcassets in Resources */,
+				D41EF93517ECCB7300D2DAD5 /* static-api in Resources */,
 				D43A697517E92AF6006A1B03 /* InfoPlist.strings in Resources */,
 				D43A697E17E92AF6006A1B03 /* Main.storyboard in Resources */,
 			);
@@ -361,22 +422,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				D43A69B417E942B5006A1B03 /* NAVELCommit.m in Sources */,
-				D43A69C017E94457006A1B03 /* RXCollectionController.m in Sources */,
 				D489B85E17EA93BD0082BA63 /* RXModelCell.m in Sources */,
 				D43A69CA17E94C60006A1B03 /* RXPromisedImageView.m in Sources */,
 				D43A698117E92AF6006A1B03 /* Navel-Gazing.xcdatamodeld in Sources */,
+				D41EF94717ED2B0800D2DAD5 /* RXMemo.m in Sources */,
 				D43A69BD17E942B6006A1B03 /* NAVELRepository.m in Sources */,
+				D4967BCA17EE3B7000C6E983 /* NAVELRepositoriesController.m in Sources */,
+				D4967BC517EE30EC00C6E983 /* RXObservationTarget.m in Sources */,
 				D489B86117EA94190082BA63 /* UIView+RXModelMapping.m in Sources */,
+				D41EF93817ECD80400D2DAD5 /* NAVELUsersController.m in Sources */,
 				D489B86B17EAA4220082BA63 /* NAVELViewPerson.m in Sources */,
+				D4A6D38417EC9A5400B8F92E /* RXMaybe.m in Sources */,
+				D41EF93317ECC99900D2DAD5 /* RXResourceController.m in Sources */,
+				D41EF93B17ED20BA00D2DAD5 /* RXCollectionChange.m in Sources */,
 				D43A69BA17E942B6006A1B03 /* NAVELBranch.m in Sources */,
+				D4A6D38117EC5A4C00B8F92E /* NAVELModelController.m in Sources */,
 				D489B86517EA972A0082BA63 /* NAVELPersonCell.m in Sources */,
 				D489B84E17EA87660082BA63 /* RXResponse.m in Sources */,
 				D43A697717E92AF6006A1B03 /* main.m in Sources */,
 				D43A697B17E92AF6006A1B03 /* NAVELAppDelegate.m in Sources */,
 				D43A69AD17E9363A006A1B03 /* RXMemoization.m in Sources */,
+				D4F2D4F317ED361C00F4A1A5 /* RXCollectionViewController.m in Sources */,
+				D4C6C11717EAAC960000E04E /* NAVELRepositoryCell.m in Sources */,
 				D43A69B717E942B6006A1B03 /* NAVELPerson.m in Sources */,
 				D43A69A917E935C5006A1B03 /* RXPersistenceController.m in Sources */,
 				D43A69B017E93786006A1B03 /* RXPromise.m in Sources */,
+				D4A6D38A17ECA06900B8F92E /* RXMonad.m in Sources */,
+				D41EF94117ED289800D2DAD5 /* RXCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

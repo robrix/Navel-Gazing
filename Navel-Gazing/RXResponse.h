@@ -10,7 +10,7 @@
 
 @protocol RXUserInterfaceContextResponder <NSObject>
 
--(IBAction)requestUserInterfaceContext:(id<RXRequester>)requester;
+-(IBAction)respondWithUserInterfaceContext:(id<RXRequester>)requester;
 
 @end
 
@@ -19,7 +19,7 @@
 
 @protocol RXFirstResponder <NSObject>
 
--(IBAction)requestFirstResponder:(id<RXRequester>)sender;
+-(IBAction)respondWithFirstResponder:(id<RXRequester>)sender;
 
 @end
 

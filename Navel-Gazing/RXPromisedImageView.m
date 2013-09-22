@@ -9,11 +9,11 @@
 
 @implementation RXPromisedImageView
 
--(void)setPromisedImage:(id<RXPromise>)promisedImage {
+-(void)setPromisedImage:(RXPromise *)promisedImage {
 	if (_promisedImage != promisedImage) {
 		[_promisedImage cancel];
 		
-		_promisedImage = [promisedImage then:^(RXPromiseResolver *resolver, UIImage *image) {
+		_promisedImage = [promisedImage then:^(RXPromise *resolver, UIImage *image) {
 			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 				_promisedImage = nil;
 				[resolver fulfillWithObject:self.image = image];
