@@ -6,7 +6,9 @@
 
 @interface NAVELRepository : NSManagedObject
 
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic) NSURL *URL;
+@property (nonatomic, copy) NSString *URLString;
 
 @property (nonatomic, copy) NSSet *branches;
 @property (nonatomic) NAVELPerson *owner;

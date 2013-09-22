@@ -2,6 +2,7 @@
 
 #import "RXPersistenceController.h"
 
+#import "RXMaybe.h"
 #import "RXMemoization.h"
 
 @interface RXPersistenceController ()
@@ -67,27 +68,41 @@
 	return context;
 }
 
--(void)performOperationWithBlock:(void(^)(NSManagedObjectContext *context))block {
+-(RXPromise *)performBackgroundOperationWithBlock:(RXPromise *(^)(NSManagedObjectContext *context))block {
+	RXPromise *completion = [RXPromise new];
 	NSManagedObjectContext *context = [self makeTemporaryContext];
 	[context performBlock:^{
-		block(context);
+		[completion fulfillWithObject:[block(context) bind:^RXPromise *(id x) {
+			return [RXPromise promiseWithObject:x];
+		}]];
 	}];
+	return completion;
 }
 
 
-#pragma mark Saving
+#pragma mark Persisting
 
--(void)saveContext:(NSManagedObjectContext *)context withCompletionHandler:(void(^)(NSError *error))completionHandler {
-	[context performBlock:^{
-		NSError *error;
-		bool didSave = [context save:&error];
-		NSManagedObjectContext *parentContext = context.parentContext;
-		if (didSave && parentContext != nil) {
-			[self saveContext:parentContext withCompletionHandler:completionHandler];
-		} else if (completionHandler) {
-			completionHandler(didSave? nil : error);
-		}
-	}];
+-(RXPromise *)persistChangesInContext:(NSManagedObjectContext *)rootContext {
+	return (RXPromise *)RXMonadRecurseWhile([RXJust just:[RXJust just:rootContext]], ^bool(id<RXMaybe> maybeContext){
+		return [maybeContext bind:^id<RXMaybe>(id object) {
+			return object;
+		}];
+	}, ^RXPromise *(id<RXMaybe> maybeContext) {
+		RXPromise *promise = [RXPromise new];
+		return [maybeContext then:^id(NSManagedObjectContext *context) {
+			[context performBlock:^{
+				NSError *error;
+				[promise fulfillWithObject:[context save:&error]?
+					[RXJust just:context.parentContext]
+				:	[RXNothing nothing:error]];
+			}];
+			return promise;
+		} else:^id(NSError *error) {
+			NSLog(@"error saving: %@", error);
+			[promise fulfillWithObject:maybeContext];
+			return promise;
+		}];
+	});
 }
 
 @end

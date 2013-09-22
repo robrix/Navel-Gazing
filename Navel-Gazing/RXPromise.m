@@ -1,43 +1,69 @@
 //  Copyright (c) 2013 Rob Rix. All rights reserved.
 
 #import "RXPromise.h"
+#import "RXMaybe.h"
 
-@interface RXDependentPromise : RXPromiseResolver
-
--(instancetype)initWithDependency:(id<RXPromise>)parent block:(RXPromiseThenBlock)block;
-
--(void)observeFulfillmentOfDependencyWithObject:(id)object;
-
-@end
-
-
-@interface RXPromiseResolver () <RXPromise>
+@interface RXPromise ()
 
 @property (nonatomic, readonly) dispatch_queue_t queue;
 
-@property (nonatomic) NSMutableSet *dependants;
-
--(void)cancelSerialized;
+@property (nonatomic) NSMutableSet *observers;
 
 @property (nonatomic, getter = isFulfilled) bool fulfilled;
 
 @property (nonatomic) id object;
 
+@property (nonatomic, weak, readonly) RXPromise *parent;
+
 @end
 
-@implementation RXPromiseResolver
+@implementation RXPromise
+
++(instancetype)promiseForContentsOfURLRequest:(NSURLRequest *)request {
+	RXPromise *promise = [RXPromise new];
+	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+		[promise fulfillWithObject:response? [RXJust just:data] : [RXNothing nothing:error]];
+	}];
+	[task resume];
+	return promise;
+}
+
++(instancetype)promiseForContentsOfURL:(NSURL *)URL {
+	RXPromise *promise = [RXPromise new];
+	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+		[promise fulfillWithObject:response? [RXJust just:data] : [RXNothing nothing:error]];
+	}];
+	[task resume];
+	return promise;
+}
+
++(instancetype)promiseWithObject:(id)object {
+	return [[self alloc] initWithObject:object];
+}
+
+-(instancetype)initWithParent:(RXPromise *)parent {
+	if ((self = [self init])) {
+		_parent = parent;
+	}
+	return self;
+}
+
+-(instancetype)initWithObject:(id)object {
+	if ((self = [self init])) {
+		_object = object;
+		
+		_fulfilled = YES;
+		_observers = nil;
+	}
+	return self;
+}
 
 -(instancetype)init {
 	if ((self = [super init])) {
 		_queue = dispatch_queue_create("com.antitypical.RXPromise", DISPATCH_QUEUE_SERIAL);
 		
-		_dependants = [NSMutableSet new];
+		_observers = [NSMutableSet new];
 	}
-	return self;
-}
-
-
--(id<RXPromise>)promise {
 	return self;
 }
 
@@ -45,29 +71,33 @@
 #pragma mark Closure
 
 -(instancetype)then:(RXPromiseThenBlock)block {
-	RXDependentPromise *dependant = [[RXDependentPromise alloc] initWithDependency:self block:block];
+	return [self bind:^RXPromise *(id object) {
+		RXPromise *promise = [RXPromise new];
+		block(promise, object);
+		return promise;
+	}];
+}
+
+-(void)onComplete:(void(^)(id object))block {
 	dispatch_async(self.queue, ^{
-		[self.dependants addObject:dependant];
-		
 		if (self.isFulfilled) {
-			[dependant observeFulfillmentOfDependencyWithObject:self.object];
+			block(self.object);
+		} else {
+			[self.observers addObject:block];
 		}
 	});
-	return dependant;
 }
 
 
 #pragma mark Cancellation
 
--(void)cancelSerialized {
-	self.fulfilled = NO;
-	self.dependants = nil;
-	self.object = nil;
-}
-
 -(void)cancel {
 	dispatch_sync(self.queue, ^{
-		[self cancelSerialized];
+		if (!self.fulfilled) {
+			self.fulfilled = NO;
+			self.observers = nil;
+			self.object = nil;
+		}
 	});
 }
 
@@ -80,59 +110,30 @@
 		
 		self.object = object;
 		
-		for (RXDependentPromise *dependant in self.dependants) {
-			[dependant observeFulfillmentOfDependencyWithObject:object];
+		for (RXPromiseUnitFunction observer in self.observers) {
+			observer(object);
 		}
 		
-		self.dependants = nil;
+		self.observers = nil;
 	});
 }
 
-@end
 
+#pragma mark RXMonad
 
-@interface RXDependentPromise ()
-
-@property (nonatomic, weak) id<RXPromise> dependency;
-@property (nonatomic, copy) RXPromiseThenBlock block;
-
-@end
-
-@implementation RXDependentPromise
-
--(instancetype)initWithDependency:(id<RXPromise>)dependency block:(RXPromiseThenBlock)block {
-	if ((self = [super init])) {
-		_dependency = dependency;
-		
-		_block = [block copy];
-	}
-	return self;
++(instancetype)unit:(id)value {
+	return [[self alloc] initWithObject:value];
 }
 
-
--(void)cancelSerialized {
-	[super cancelSerialized];
-	
-	self.block = nil;
-}
-
--(void)observeFulfillmentOfDependencyWithObject:(id)object {
-	dispatch_async(self.queue, ^{
-		if (self.block) {
-			self.block(self, object);
-		}
-		self.block = nil;
-	});
-}
-
-@end
-
-
-id<RXPromise> RXPromiseForContentsOfURL(NSURL *URL) {
-	RXPromiseResolver *resolver = [RXPromiseResolver new];
-	NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-		[resolver fulfillWithObject:data];
+-(RXPromise *)bind:(RXPromiseUnitFunction)f {
+	RXPromise *output = [RXPromise new];
+	[self onComplete:^(id object) {
+		[f(object) onComplete:^(id object) {
+			[output fulfillWithObject:object];
+		}];
 	}];
-	[task resume];
-	return resolver.promise;
+	
+	return output;
 }
+
+@end

@@ -23,6 +23,7 @@
         <relationship name="repositories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Repository" inverseName="owner" inverseEntity="Repository" syncable="YES"/>
     </entity>
     <entity name="Repository" representedClassName="NAVELRepository" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="urlString" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Branch" inverseName="repository" inverseEntity="Branch" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="repositories" inverseEntity="Person" syncable="YES"/>
@@ -31,6 +32,6 @@
         <element name="Branch" positionX="-297" positionY="-162" width="128" height="88"/>
         <element name="Commit" positionX="-117" positionY="-43" width="128" height="133"/>
         <element name="Person" positionX="-299" positionY="126" width="128" height="148"/>
-        <element name="Repository" positionX="-470" positionY="-63" width="128" height="88"/>
+        <element name="Repository" positionX="-470" positionY="-63" width="128" height="103"/>
     </elements>
 </model>
