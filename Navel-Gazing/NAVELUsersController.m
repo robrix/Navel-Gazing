@@ -63,6 +63,8 @@
 		repositoriesController.modelController = self.modelController;
 		repositoriesController.user = modelObject;
 		
+		[self.modelController promiseForRepositoriesForUser:modelObject];
+		
 		repositoriesViewController.delegate = repositoriesController;
 		repositoriesViewController.dataSource = repositoriesController;
 	}
