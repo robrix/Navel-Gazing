@@ -64,13 +64,36 @@ RXPromiseUnitFunction NAVELPromiseToDecodeJSONFunction = ^(id<RXMaybe> maybeData
 		NAVELPerson *user = (NAVELPerson *)[context existingObjectWithID:userID error:NULL];
 		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Repository" inManagedObjectContext:context];
 		
-		[user.repositories sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+		NSEnumerator *localRepositories = [[user.repositories sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]] objectEnumerator];
+		NSEnumerator *remoteRepositories = [[repositoriesJSON sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]] objectEnumerator];
 		
-		for (NSDictionary *repositoryJSON in repositoriesJSON) {
-			NAVELRepository *repository = [[NAVELRepository alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
-			repository.name = repositoryJSON[@"name"];
-			repository.URLString = repositoryJSON[@"url"];
-			repository.owner = user;
+		NAVELRepository *local = [localRepositories nextObject];
+		NSDictionary *remote = [remoteRepositories nextObject];
+		while (local ?: remote) {
+			NSComparisonResult order = NSOrderedSame;
+			order = !local? NSOrderedAscending : order;
+			order = !remote? NSOrderedDescending : order;
+			order = order ?: [(NSString *)remote[@"name"] compare:local.name];
+			switch (order) {
+				case NSOrderedAscending:
+					local = [[NAVELRepository alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
+					local.owner = user;
+					local.name = remote[@"name"];
+					local.URLString = remote[@"url"];
+					local = nil;
+					
+				case NSOrderedSame:
+					remote = [remoteRepositories nextObject];
+					break;
+					
+				case NSOrderedDescending:
+					[context deleteObject:local];
+					break;
+			}
+			
+			if (order != NSOrderedAscending) {
+				local = [localRepositories nextObject];
+			}
 		}
 	}];
 }

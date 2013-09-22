@@ -98,6 +98,7 @@
 			}];
 			return promise;
 		} else:^id(NSError *error) {
+			NSLog(@"error saving: %@", error);
 			[promise fulfillWithObject:maybeContext];
 			return promise;
 		}];
