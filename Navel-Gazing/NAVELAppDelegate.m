@@ -26,7 +26,7 @@
 -(void)applicationDidFinishLaunching:(UIApplication *)application {
 	self.persistenceController = [RXPersistenceController new];
 	
-	bool online = NO;
+	bool online = YES;
 	NSURL *URL = online?
 		[NSURL URLWithString:@"https://api.github.com/"]
 	:	[[NSBundle mainBundle] URLForResource:@"static-api" withExtension:nil];
