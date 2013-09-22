@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *defaultReuseIdentifier;
 @property (nonatomic, copy) NSString *reuseIdentifierKeyPath;
 
-@property (nonatomic, weak) IBOutlet id<RXCollectionViewControllerDataSource> dataSource;
+@property (nonatomic) IBOutlet id<RXCollectionViewControllerDataSource> dataSource;
 @property (nonatomic, weak) IBOutlet id<RXCollectionViewControllerDelegate> delegate;
 
 @end
