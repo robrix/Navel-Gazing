@@ -3,6 +3,8 @@
 #import "RXPromise.h"
 #import "RXResponse.h"
 
+@class NAVELPerson;
+
 @class RXPersistenceController, RXResourceController;
 
 @interface NAVELModelController : NSObject
@@ -12,6 +14,8 @@
 @property (nonatomic, readonly) NSManagedObjectContext *userInterfaceContext;
 
 -(RXPromise *)promiseForUserWithName:(NSString *)userName;
+
+-(RXPromise *)promiseForRepositoriesForUser:(NAVELPerson *)user;
 
 @end
 

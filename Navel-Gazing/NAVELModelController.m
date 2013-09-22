@@ -6,6 +6,7 @@
 #import "RXMaybe.h"
 
 #import "NAVELPerson.h"
+#import "NAVELRepository.h"
 
 @interface NAVELModelController ()
 
@@ -30,50 +31,69 @@
 }
 
 
+RXPromiseUnitFunction NAVELPromiseToDecodeJSONFunction = ^(id<RXMaybe> maybeData) {
+	return [RXPromise promiseWithObject:[maybeData bind:^id<RXMonad>(NSData *data) {
+		NSError *error;
+		id JSONObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+		return JSONObject? [RXJust just:JSONObject] : [RXNothing nothing:error];
+	}]];
+};
+
 -(RXPromise *)promiseForUserWithName:(NSString *)userName {
-	RXPromise *details = [[[self.resourceController subresourceWithPath:@"users"] subresourceWithPath:userName] promiseForContents];
-	
-	RXPromise *JSON = [details bind:^RXPromise *(id<RXMaybe> maybeData) {
-		return [RXPromise promiseWithObject:[maybeData bind:^id<RXMonad>(NSData *data) {
-			NSError *error;
-			id JSONObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-			return JSONObject? [RXJust just:JSONObject] : [RXNothing nothing:error];
-		}]];
+	return [self loadResource:[[self.resourceController subresourceWithPath:@"users"] subresourceWithPath:userName] andProcessWithBlock:^(NSDictionary *details, NSManagedObjectContext *context) {
+		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:context];
+		
+		NSFetchRequest *extantRequest = [NSFetchRequest new];
+		extantRequest.entity = entity;
+		extantRequest.predicate = [NSPredicate predicateWithFormat:@"userName = %@", userName];
+		extantRequest.fetchLimit = 1;
+		
+		NAVELPerson *person =
+			[context executeFetchRequest:extantRequest error:NULL].firstObject
+		?:	[[NAVELPerson alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
+		person.userName = userName;
+		person.name = details[@"name"];
+		person.emailAddress = details[@"email"];
+		person.avatarURLString = details[@"avatar_url"];
 	}];
-	
-	return [JSON bind:^RXPromise *(id<RXMaybe> maybeDetails) {
-		RXPromise *finishedSaving;
-		[maybeDetails bind:^id<RXMonad>(NSDictionary *details) {
+}
+
+-(RXPromise *)promiseForRepositoriesForUser:(NAVELPerson *)user {
+	NSManagedObjectID *userID = [user objectID];
+	return [self loadResource:[[[self.resourceController subresourceWithPath:@"users"] subresourceWithPath:user.userName] subresourceWithPath:@"repos"] andProcessWithBlock:^(NSArray *repositoriesJSON, NSManagedObjectContext *context) {
+		NAVELPerson *user = (NAVELPerson *)[context existingObjectWithID:userID error:NULL];
+		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Repository" inManagedObjectContext:context];
+		
+		[user.repositories sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+		
+		for (NSDictionary *repositoryJSON in repositoriesJSON) {
+			NAVELRepository *repository = [[NAVELRepository alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
+			repository.name = repositoryJSON[@"name"];
+			repository.URLString = repositoryJSON[@"url"];
+			repository.owner = user;
+		}
+	}];
+}
+
+-(RXPromise *)loadResource:(RXResourceController *)resource andProcessWithBlock:(void(^)(id JSON, NSManagedObjectContext *context))block {
+	return RXMonadPipeline([resource promiseForContents], @[NAVELPromiseToDecodeJSONFunction,
+															^(id<RXMaybe> maybeJSON){
+		RXPromise *saved = [RXPromise new];
+		
+		[maybeJSON then:^id(id JSON) {
 			[[self.persistenceController performBackgroundOperationWithBlock:^RXPromise *(NSManagedObjectContext *context) {
-				RXPromise *save = [RXPromise new];
-				NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person" inManagedObjectContext:context];
+				block(JSON, context);
 				
-				NSFetchRequest *extantRequest = [NSFetchRequest new];
-				extantRequest.entity = entity;
-				extantRequest.predicate = [NSPredicate predicateWithFormat:@"userName = %@", userName];
-				extantRequest.fetchLimit = 1;
-				
-				NAVELPerson *person =
-					[context executeFetchRequest:extantRequest error:NULL].firstObject
-				?:	[[NAVELPerson alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
-				person.userName = userName;
-				person.name = details[@"name"];
-				person.emailAddress = details[@"email"];
-				person.avatarURLString = details[@"avatar_url"];
-				
-				[[self.persistenceController persistChangesInContext:context] bind:^RXPromise *(id x) {
-					[save fulfillWithObject:x];
-					return nil;
-				}];
-				return save;
+				return [self.persistenceController persistChangesInContext:context];
 			}] bind:^RXPromise *(id x) {
-				[finishedSaving fulfillWithObject:x];
+				[saved fulfillWithObject:x];
 				return nil;
 			}];
 			return nil;
 		}];
-		return  finishedSaving;
-	}];
+		
+		return saved;
+	}]);
 }
 
 @end
