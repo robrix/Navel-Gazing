@@ -22,7 +22,15 @@
 }
 
 -(void)setURL:(NSURL *)URL {
-	self.urlString = [URL description];
+	self.urlString = [URL absoluteString];
+}
+
+-(NSString *)URLString {
+	return self.urlString;
+}
+
+-(void)setURLString:(NSString *)URLString {
+	self.urlString = URLString;
 }
 
 @end
